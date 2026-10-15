@@ -162,13 +162,17 @@ h2 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--ink
 .link::after{content:"";position:absolute;left:0;top:-10px;width:2px;height:10px;background:var(--c);opacity:0}
 .link.live::after{animation:flowdown .5s linear forwards}
 @keyframes flowdown{0%{top:-10px;opacity:1}100%{top:18px;opacity:1}}
+.phone-wrap{display:flex;flex-direction:column;align-items:center;gap:14px;align-self:center}
+.phone{width:min(270px,70vw);aspect-ratio:9/19.5;border-radius:38px;padding:9px;background:linear-gradient(145deg,#2a2a36,#0d0d14);box-shadow:0 0 0 1px var(--line2),0 40px 80px -30px rgba(0,0,0,.9),0 0 80px -20px color-mix(in srgb,var(--c) 50%,transparent)}
+.phone video{width:100%;height:100%;object-fit:cover;border-radius:30px;display:block;background:#fff}
+.phone-cap{color:var(--mute)}
 .branch{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
 .branch .node{grid-template-columns:1fr;text-align:center;padding:9px 6px;gap:2px}
 .branch .node .t{font-size:12px}
 @media(max-width:900px){.flag{grid-template-columns:1fr}}
 
 /* capability map */
-.caps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.caps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:20px;overflow:hidden}
 .cap{background:var(--bg);padding:32px 28px 30px;position:relative;transition:background .3s;min-height:300px;display:flex;flex-direction:column}
 .cap:hover{background:var(--bg2)}
 .cap .k{display:flex;justify-content:space-between;align-items:center;margin-bottom:34px}
@@ -180,7 +184,7 @@ h2 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--ink
 .cap .uses{display:flex;flex-wrap:wrap;gap:6px;margin-top:22px}
 .cap .uses a,.cap .uses span{font-family:var(--mono);font-size:11px;padding:4px 9px;border-radius:99px;border:1px solid var(--line2);color:var(--ink2);transition:all .2s;cursor:pointer}
 .cap .uses a:hover,.cap .uses span:hover{border-color:var(--c);color:var(--c)}
-@media(max-width:980px){.caps{grid-template-columns:1fr 1fr}}
+@media(max-width:1100px){.caps{grid-template-columns:1fr 1fr}}
 @media(max-width:640px){.caps{grid-template-columns:1fr}.cap{min-height:0}}
 
 /* index */
@@ -232,8 +236,17 @@ h2 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--ink
 .yr-row.seen .bar{width:100%}
 @media(max-width:760px){.yr-row{grid-template-columns:1fr;gap:8px}}
 
+/* experience */
+.xp{border-top:1px solid var(--line)}
+.xr{display:grid;grid-template-columns:200px 1fr;gap:32px;padding:28px 0;border-bottom:1px solid var(--line)}
+.xd{color:var(--c);padding-top:4px}
+.xr h6{font-size:21px;font-weight:500;letter-spacing:-.01em}
+.xr h6 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--ink2)}
+.xr p{color:var(--ink2);font-weight:300;margin-top:8px;max-width:760px}
+@media(max-width:760px){.xr{grid-template-columns:1fr;gap:6px}}
+
 /* stack */
-.stack-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.stack-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:48px 16px}
 .sg{border-top:1px solid var(--line2);padding-top:18px}
 .sg .mono{color:var(--c);display:block;margin-bottom:14px}
 .sg ul{list-style:none;display:flex;flex-direction:column;gap:7px;color:var(--ink2);font-size:15px}
@@ -278,7 +291,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
       <a href="#systems"><b>01</b>systems</a>
       <a href="#map"><b>02</b>capabilities</a>
       <a href="#index"><b>03</b>index</a>
-      <a href="#journey"><b>04</b>journey</a>
+      <a href="#experience"><b>04</b>experience</a>
       <a href="#contact"><b>05</b>contact</a>
     </div>
   </div>
@@ -290,9 +303,9 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   <div id="tip"></div>
   <div class="wrap">
     <div class="hero-text">
-      <div class="eyebrow mono"><span></span>AI engineer · RAG · LLMs · ML in production</div>
+      <div class="eyebrow mono"><span></span>AI engineer · RAG · LLMs · full stack · DevOps</div>
       <h1>Models that<br>survive <em>production</em></h1>
-      <p class="lede">I build <b>RAG pipelines, LLM applications and GenAI systems</b>, plus the evals systems, Kafka/Celery/BullMQ pipelines and OpenTelemetry-traced platforms that keep them correct after launch. Every dot on this page is a project. Ask it something.</p>
+      <p class="lede">I build <b>RAG pipelines, LLM applications and GenAI systems</b>, plus the full-stack products around them (Node.js, TypeORM, PostgreSQL, WebSockets) and the evals, Kafka pipelines, CI/CD and observability that keep them correct after launch. Every dot on this page is a project. Ask it something.</p>
 
       <div class="ask" id="ask">
         <div class="ask-head mono"><div class="dots"><i></i><i></i><i></i></div><span>retrieve ⟶ rank ⟶ generate</span></div>
@@ -313,7 +326,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 <div class="stats">
   <div class="wrap">
     <div class="stat"><b class="cnt" data-to="200">0</b><span class="mono">repositories built, 2017 → today</span></div>
-    <div class="stat"><b class="cnt" data-to="9">0</b><span class="mono">years shipping ML</span></div>
+    <div class="stat"><b class="cnt" data-to="10">0</b><span class="mono">years building software</span></div>
     <div class="stat"><b>3</b><span class="mono">LLM providers behind one interface</span></div>
     <div class="stat"><b>PyPI<span style="color:var(--genai)">+</span>npm</b><span class="mono">open-source eval tooling</span></div>
   </div>
@@ -429,19 +442,9 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
         <div class="pills"><span class="pill">Python</span><span class="pill">agents</span><span class="pill">Kafka</span><span class="pill">Prometheus</span><span class="pill">Grafana</span><span class="pill">SSH + Linux agent</span><span class="pill">Kotlin</span><span class="pill">SwiftUI</span><span class="pill">Docker</span></div>
         <div class="links"><span class="btn lock">🔒 private repos · demo on request</span></div>
       </div>
-      <div class="pipe" data-pipe>
-        <div class="pipe-title mono"><span>work item → verified outcome</span><b>▶ run</b></div>
-        <div class="flow">
-          <div class="node"><div class="ic">@</div><div><div class="t">request arrives</div><div class="d">slack · issue · email · alert</div></div><div class="st">idle</div></div>
-          <div class="link"></div>
-          <div class="node"><div class="ic">⌖</div><div><div class="t">route + gather evidence</div><div class="d">repo · server · memory</div></div><div class="st">idle</div></div>
-          <div class="link"></div>
-          <div class="node"><div class="ic">λ</div><div><div class="t">plan, edit, test in sandbox</div><div class="d">branch + diff</div></div><div class="st">idle</div></div>
-          <div class="link"></div>
-          <div class="node"><div class="ic">⚖</div><div><div class="t">policy + human approval</div><div class="d">merge → deploy</div></div><div class="st">idle</div></div>
-          <div class="link"></div>
-          <div class="node"><div class="ic">✓</div><div><div class="t">verify, reply, close</div><div class="d">outcome saved to memory</div></div><div class="st">idle</div></div>
-        </div>
+      <div class="phone-wrap">
+        <div class="phone"><video src="assets/opswren-demo.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Opswren Android app demo: plan a change, approve it, fix an incident"></video></div>
+        <div class="mono phone-cap">live app · plan → approve → fix an incident</div>
       </div>
     </article>
   </div>
@@ -454,7 +457,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
       <div class="stage mono"><b>stage 02</b>capability map</div>
       <div>
         <h2>Where I go <em>deep</em></h2>
-        <p class="sec-sub">Six areas, each backed by code I've shipped. Click a project to jump to it in the index.</p>
+        <p class="sec-sub">Eight areas, each backed by code I've shipped. Click a project to jump to it in the index.</p>
       </div>
     </div>
     <div class="caps rv" id="caps"></div>
@@ -480,6 +483,25 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   </div>
 </section>
 
+<!-- EXPERIENCE -->
+<section id="experience" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="stage mono"><b>experience</b>where the work happened</div>
+      <div>
+        <h2>Ten years, <em>four rooms</em></h2>
+        <p class="sec-sub">From requirements and product decisions to the code, the pipelines and the pager.</p>
+      </div>
+    </div>
+    <div class="xp">
+      <div class="xr rv" style="--c:var(--rag)"><div class="xd mono">Dec 2023 → now</div><div><h6>Solution Consultant <em>· Things Alive</em></h6><p>Microservices for an automotive diagnostics and industrial IoT platform: MQTT and event-driven telemetry ingest, real-time alerting, RAG chatbots with agent workflows over vector search, and a multi-tenant platform rebuild. Docker, CI/CD, database tuning, caching and horizontal scaling for high-volume real-time workloads.</p></div></div>
+      <div class="xr rv" style="--c:var(--llm)"><div class="xd mono">2021 → 2023</div><div><h6>Solutions Consultant <em>· Infosys</em></h6><p>Cloud-native React and Node.js applications for enterprise clients. Led automation platforms for schema, data and stored-procedure migration that cut manual effort by 50–60%. Queue-based async processing, AI-assisted validation, query optimization and CI/CD on AWS, GCP and Azure.</p></div></div>
+      <div class="xr rv" style="--c:var(--mlops)"><div class="xd mono">2018 → 2021</div><div><h6>Product Manager, R&D <em>· Capgemini</em></h6><p>Led a cross-functional team building enterprise AI: NLP "how-to" assistants with TF-IDF and custom ranking, ticket recommendation and clustering engines, document ingestion and embedding pipelines, and analytics dashboards.</p></div></div>
+      <div class="xr rv" style="--c:var(--found)"><div class="xd mono">2014 → 2018</div><div><h6>Business Analyst <em>· Bridge & Roof</em>, then PGDM <em>· FORE School of Management</em></h6><p>Requirements, BRDs and delivery tracking on infrastructure projects, then an MBA in marketing and IT operations. B.Tech, IGIT Sarang.</p></div></div>
+    </div>
+  </div>
+</section>
+
 <!-- 04 JOURNEY -->
 <section id="journey" style="padding-top:0">
   <div class="wrap">
@@ -487,7 +509,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
       <div class="stage mono"><b>stage 04</b>training history</div>
       <div>
         <h2>From notebooks <em>to pagers</em></h2>
-        <p class="sec-sub">Nine years of moving from "it scores well" to "it runs well, and we'll know when it doesn't".</p>
+        <p class="sec-sub">Moving from "it scores well" to "it runs well, and we'll know when it doesn't".</p>
       </div>
     </div>
     <div class="tl" id="tl"></div>
@@ -508,10 +530,14 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
       <div><h2>The <em>stack</em></h2></div>
     </div>
     <div class="stack-grid rv">
-      <div class="sg" style="--c:var(--llm)"><span class="mono">LLMs & GenAI</span><ul><li>Gemini · Vertex AI</li><li>Claude · Anthropic SDK</li><li>OpenAI · Qwen · Llama</li><li>Ollama · llama.cpp · GGUF</li><li>Unsloth · LoRA · PEFT</li><li>LangChain · SmolAgents · MCP</li></ul></div>
-      <div class="sg" style="--c:var(--rag)"><span class="mono">Retrieval, data & queues</span><ul><li>ChromaDB · pgvector</li><li>PostgreSQL · Redis</li><li>Kafka · Airflow</li><li>Celery · BullMQ</li><li>OCR · layout parsing</li><li>TF-IDF · embeddings · rerank</li><li>Web crawling pipelines</li></ul></div>
-      <div class="sg" style="--c:var(--mlops)"><span class="mono">MLOps & evals</span><ul><li>Evals systems · LLM-as-judge</li><li>pytest · Jest · Vitest</li><li>OpenTelemetry · Langfuse</li><li>Prometheus · Grafana</li><li>GitHub Actions gates</li><li>Docker · sandboxes</li></ul></div>
-      <div class="sg" style="--c:var(--vision)"><span class="mono">Vision, edge & apps</span><ul><li>YOLO · CLIP · CRNN</li><li>PyTorch · TensorFlow · Keras</li><li>Jetson · MQTT · sensor fusion</li><li>FastAPI · Django · NestJS</li><li>TypeScript · React · Next.js</li><li>Kotlin · SwiftUI</li></ul></div>
+      <div class="sg" style="--c:var(--llm)"><span class="mono">LLMs & GenAI</span><ul><li>Gemini · Vertex AI</li><li>Claude · OpenAI · Qwen · Llama</li><li>Ollama · llama.cpp · GGUF</li><li>Unsloth · LoRA · PEFT</li><li>LangChain · SmolAgents · MCP</li></ul></div>
+      <div class="sg" style="--c:var(--rag)"><span class="mono">RAG & retrieval</span><ul><li>ChromaDB · pgvector</li><li>Embeddings · rerank · TF-IDF</li><li>OCR · layout parsing</li><li>Airflow crawling pipelines</li><li>Grounded answers + citations</li></ul></div>
+      <div class="sg" style="--c:var(--mlops)"><span class="mono">MLOps & evals</span><ul><li>Evals systems · LLM-as-judge</li><li>pytest · Jest · Vitest</li><li>Regression gates in CI</li><li>Agent benchmarks · sandboxes</li><li>Reproducible training</li></ul></div>
+      <div class="sg" style="--c:var(--prod)"><span class="mono">Observability</span><ul><li>OpenTelemetry · OTLP</li><li>Langfuse tracing</li><li>Prometheus · Grafana</li><li>Alerting → incidents</li><li>Cost & latency tracking</li></ul></div>
+      <div class="sg" style="--c:#b4f461"><span class="mono">Full stack</span><ul><li>Node.js · NestJS · TypeScript</li><li>TypeORM · SQLAlchemy</li><li>FastAPI · Django</li><li>React · Next.js · React Native</li><li>Kotlin · SwiftUI</li></ul></div>
+      <div class="sg" style="--c:var(--genai)"><span class="mono">Data, queues & streaming</span><ul><li>PostgreSQL · query & index tuning</li><li>Redis · Kafka</li><li>Celery · BullMQ</li><li>WebSocket · Socket.IO</li><li>MQTT · video streaming</li></ul></div>
+      <div class="sg" style="--c:#d4d4d8"><span class="mono">DevOps & CI/CD</span><ul><li>Docker · Kubernetes</li><li>GitHub Actions · GitLab CI</li><li>CI/CD pipelines · PR gates</li><li>Nginx · Linux · SSH</li><li>Policy-gated deploys</li></ul></div>
+      <div class="sg" style="--c:var(--vision)"><span class="mono">Vision & edge</span><ul><li>YOLO · CLIP · CRNN</li><li>PyTorch · TensorFlow · Keras</li><li>Jetson · edge inference</li><li>Radar + IMU sensor fusion</li><li>OpenCV</li></ul></div>
     </div>
   </div>
 </section>
@@ -521,9 +547,10 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   <div class="wrap">
     <div class="stage mono rv" style="margin-bottom:28px"><b>stage 05</b>serve</div>
     <h2 class="rv">Let's build something<br>that <em>stays up</em></h2>
-    <p class="sec-sub rv">Open to roles and collaborations in GenAI platforms, RAG, LLM evaluation and ML infrastructure. Happy to walk through any private project live.</p>
+    <p class="sec-sub rv">Open to roles and collaborations in GenAI platforms, RAG, LLM evaluation, full-stack product engineering and ML infrastructure. Happy to walk through any private project live.</p>
     <div class="row rv">
       <a class="btn solid" style="--c:var(--rag)" href="https://www.linkedin.com/in/tapas-mohanty/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="btn" style="--c:var(--genai)" href="mailto:mtapas.mohanty95@gmail.com">mtapas.mohanty95@gmail.com</a>
       <a class="btn" style="--c:var(--llm)" href="https://github.com/tap222" target="_blank" rel="noopener">GitHub · tap222 ↗</a>
       <a class="btn" style="--c:var(--mlops)" href="https://github.com/tap222/assay-evals" target="_blank" rel="noopener">Start with Assay ↗</a>
     </div>
@@ -538,6 +565,8 @@ const CAT = {
   genai: {label:'Generative AI',   c:'#ff6b3d'},
   mlops: {label:'MLOps & evals',   c:'#f5c86a'},
   prod:  {label:'Production eng.', c:'#6cc4ff'},
+  full:  {label:'Full stack',      c:'#b4f461'},
+  devops:{label:'DevOps & CI/CD',  c:'#d4d4d8'},
   vision:{label:'Vision & edge',   c:'#ff7eb6'},
 };
 const GH = 'https://github.com/tap222/';
@@ -549,15 +578,21 @@ const P = [
  {id:'folio',  n:'Folio', cat:'rag', y:2026, repo:null, flag:1,
   d:'Document AI pipeline: file prep, pre-processing, OCR, classification, indexing and verification as a state machine per document. Gemini, Claude and Qwen behind one provider interface.',
   s:['FastAPI','Celery','Kafka','Postgres','Vertex AI'], k:'kafka celery queue workers redis prometheus document ai ocr extraction pipeline gemini claude qwen vertex genai production celery state machine indexing classification structured multi provider llm'},
- {id:'opswren',n:'Opswren', cat:'prod', y:2026, repo:null, flag:1,
+ {id:'opswren',n:'Opswren', cat:'devops', y:2026, repo:null, flag:1,
   d:'AI operations platform. Requests and alerts become work items: plan, code edit, sandbox tests, approval, deploy, verification. Backend plus Android and iOS apps.',
-  s:['Python','Kotlin','SwiftUI','Docker'], k:'kafka prometheus grafana observability aiops agents devops deploy incident monitoring autonomous coding agent approval policy sandbox platform production engineering mobile slack github'},
- {id:'iot',n:'Industrial IoT + AI platform', cat:'prod', y:2026, repo:null,
-  d:'Event-driven backend for sensor fleets: Kafka streams feed alarm watchers, BullMQ job queues run workflows and device onboarding, and AI workflows are traced with Langfuse and OpenTelemetry.',
-  s:['NestJS','Kafka','BullMQ','Langfuse','OpenTelemetry'], k:'kafka bullmq bull queue jobs event driven streaming iot sensors alarms observability tracing opentelemetry otel langfuse workflows nestjs production engineering'},
- {id:'crm',n:'Booking CRM with AI receptionist', cat:'prod', y:2026, repo:null,
-  d:'Multi-platform booking CRM (web, backend, iOS/Android): BullMQ background jobs and queues, with the AI receptionist covered by Assay regression evals.',
-  s:['TypeScript','BullMQ','React Native','Assay'], k:'bullmq bull queue background jobs crm booking ai receptionist evals typescript mobile production'},
+  s:['Python','Docker','CI/CD','Prometheus','Kotlin','SwiftUI'], k:'devops ci cd pipeline deployment kubernetes infrastructure kafka prometheus grafana observability aiops agents devops deploy incident monitoring autonomous coding agent approval policy sandbox platform production engineering mobile slack github'},
+ {id:'iot',n:'Connected-vehicle & IoT platform', cat:'prod', y:2025, repo:null,
+  d:'Microservices for vehicle diagnostics: MQTT telemetry ingest, DTC fault management, firmware-flashing workflows, live tracking and trips. Kafka feeds alarm watchers, BullMQ runs workflows, and a RAG chatbot answers technical questions, traced with Langfuse and OpenTelemetry.',
+  s:['Node.js','NestJS','MQTT','Kafka','BullMQ','RAG','OpenTelemetry'], k:'iot connected vehicle automotive diagnostics dtc firmware flashing mqtt telemetry streaming kafka bullmq bull queue jobs event driven alarms alerts rag chatbot embeddings semantic search langfuse opentelemetry otel tracing observability nodejs node nestjs microservices production engineering'},
+ {id:'tenant',n:'Multi-tenant IoT platform 2.0', cat:'prod', y:2026, repo:null,
+  d:'Tenant isolation in two layers: a scoped repository that makes an unscoped query a compile error, and Postgres row-level security under an unprivileged role. Audited cross-tenant reads, per-role field filtering, a drift-aware projection, and a pgvector intelligence layer. 100+ tests run against real Postgres 16.',
+  s:['NestJS','TypeORM','PostgreSQL RLS','pgvector','Socket.IO','Railway'], k:'multi tenant tenancy row level security rls postgresql postgres typeorm security audit rbac jwt pgvector vector ai prediction nestjs nodejs node websocket socket redis full stack ci cd pipeline github actions gitlab railway deploy devops'},
+ {id:'telemetry',n:'High-volume telemetry pipeline', cat:'devops', y:2026, repo:null,
+  d:'Industrial telemetry at scale: PostgreSQL range partitioning with 60-day retention and online shadow-table migration, ON CONFLICT dedupe replacing full-table prechecks, set-based KPI queries, cached shift metrics and coalesced requests. BullMQ consumers, Socket.IO live logs, systemd services, backups, archiving and Gatus uptime monitoring.',
+  s:['PostgreSQL partitioning','BullMQ','MQTT','Socket.IO','systemd','Gatus','Nginx'], k:'database optimization query tuning postgresql postgres partitioning partition index indexing performance retention archive migration telemetry iot streaming mqtt websocket socket bullmq bull queue devops systemd backup monitoring gatus uptime nginx linux deploy caching kpi'},
+ {id:'crm',n:'Booking CRM with AI receptionist', cat:'full', y:2026, repo:null,
+  d:'Full-stack, multi-platform CRM. NestJS on Node.js with TypeORM over PostgreSQL, tuned with 275+ indexes including partial unique ones. Socket.IO realtime behind a Redis adapter, BullMQ jobs, GitHub Actions PR checks and deploys. Its AI receptionist is gated by Assay evals.',
+  s:['Node.js','NestJS','TypeORM','PostgreSQL','Socket.IO','BullMQ','GitHub Actions'], k:'full stack fullstack nodejs node nestjs typescript typeorm postgresql postgres database optimization index indexing query performance websocket socket realtime streaming redis bullmq bull queue background jobs ci cd pipeline github actions deploy crm booking ai receptionist evals mobile react'},
  {id:'sqlagent',n:'Agentic SQL + MCP server', cat:'llm', y:2026, repo:null,
   d:'Natural-language analytics over Postgres: a SmolAgents SQL agent and an MCP server exposing schema and read-only query tools. Local Qwen via Ollama, PII guardrail, feedback memory.',
   s:['SmolAgents','MCP','Ollama','SQLAlchemy'], k:'agent mcp tool calling text to sql natural language database analytics guardrails pii local llm qwen ollama'},
@@ -587,10 +622,10 @@ const P = [
   s:['YOLO','sensor fusion','Python'], k:'drone detection computer vision sensor fusion defense dashboard real time edge'},
  {id:'camradar',n:'Camera + radar fusion', cat:'vision', y:2026, repo:'cam_radar_yolo',
   d:'Hybrid YOLO + MobileCLIP detection and tracking fused with mmWave radar and IMU, gimbal control, MQTT alerting and a streaming web UI.',
-  s:['YOLO','MobileCLIP','MQTT','radar'], k:'edge vision yolo clip tracking radar fusion mqtt streaming gimbal jetson real time open vocabulary'},
+  s:['YOLO','MobileCLIP','MQTT','WebSocket streaming'], k:'websocket streaming video edge vision yolo clip tracking radar fusion mqtt streaming gimbal jetson real time open vocabulary'},
  {id:'talos',n:'TALOS edge runtime', cat:'vision', y:2026, repo:null,
   d:'Production split of an edge vision system: Jetson model workers, a backend for device ingest, WebSocket and logs, and a separate UI. Benchmarked across 9 models.',
-  s:['Jetson','WebSocket','Docker'], k:'edge deployment jetson benchmark model serving websocket device production inference latency'},
+  s:['Jetson','WebSocket','Docker','streaming'], k:'streaming video websocket docker devops edge deployment jetson benchmark model serving websocket device production inference latency'},
  {id:'face',n:'Face search on Postgres', cat:'vision', y:2024, repo:'face_recognition_postgresql', star:4,
   d:'Face embeddings stored and searched in PostgreSQL behind a FastAPI service, with enrolment and live webcam recognition.',
   s:['FastAPI','Postgres','embeddings'], k:'face recognition embeddings vector search postgres fastapi api similarity'},
@@ -625,19 +660,22 @@ const CAPS = [
  {c:'llm', t:'LLMs & <em>agents</em>', p:'Fine-tuning for low-resource languages, tool-using agents, MCP servers and multi-provider routing across Gemini, Claude, Qwen and local models.', ids:['odiaLLM','sqlagent','opswren','chatbot']},
  {c:'genai', t:'Generative <em>AI</em>', p:'Multimodal products: audio to structured insight, offline assistants, and generative models from GANs to today\'s LLMs.', ids:['voxivate','voxmorph','gan3d','folio']},
  {c:'mlops', t:'MLOps & <em>evals</em>', p:'An evals system for AI behavior: regression tests, calibrated judges, CI gates, OpenTelemetry traces turned into test cases, agent benchmarks and reproducible training.', ids:['assay','logbench','crm','textsim','prodcode']},
- {c:'prod', t:'Production <em>engineering</em>', p:'Kafka event streams, Celery and BullMQ job queues, retries and recovery jobs, OpenTelemetry tracing, Prometheus and Grafana, policy-gated deploys. Systems that page you less.', ids:['iot','opswren','folio','crm']},
+ {c:'prod', t:'Production <em>engineering</em>', p:'Kafka event streams, MQTT ingest, Celery and BullMQ job queues, PostgreSQL partitioning and query tuning, row-level security, OpenTelemetry tracing. Systems that page you less.', ids:['iot','tenant','folio','sqlagent']},
+ {c:'full', t:'Full <em>stack</em>', p:'Node.js and NestJS services on TypeORM and PostgreSQL, query and index tuning, WebSocket realtime and streaming, React web and React Native, Kotlin and SwiftUI apps.', ids:['crm','tenant','iot','opswren']},
+ {c:'devops', t:'DevOps & <em>CI/CD</em>', p:'GitHub Actions and GitLab CI pipelines, tag-promoted releases that wait for CI, Docker, Kubernetes, systemd services, backups, Prometheus, Grafana and Gatus. Infrastructure that tests and ships itself.', ids:['telemetry','opswren','tenant','crm']},
  {c:'vision', t:'ML at the <em>edge</em>', p:'Real-time detection and tracking on Jetson-class hardware, fused with radar and IMU, streamed to operators over MQTT and WebSocket.', ids:['aegis','camradar','talos','face','alpr']},
 ];
 const TL = [
- {y:'2026', c:'mlops', h:'Evals, document AI and <em>AIOps</em>', p:'Released Assay on PyPI and npm. Built Folio\'s stage engine and multi-provider AI layer, Opswren\'s plan → test → approve → deploy → verify loop, an MCP-based SQL agent, Kafka + BullMQ event pipelines with OpenTelemetry tracing, and edge sensor-fusion systems.'},
+ {y:'2026', c:'mlops', h:'Evals, document AI and <em>AIOps</em>', p:'Released Assay on PyPI and npm. Built Folio\'s stage engine and multi-provider AI layer, Opswren\'s plan → test → approve → deploy → verify loop, an MCP-based SQL agent, Kafka + BullMQ event pipelines with OpenTelemetry tracing, a full-stack NestJS/TypeORM/PostgreSQL CRM with realtime WebSockets and CI/CD, and edge sensor-fusion systems.'},
  {y:'2025', c:'rag', h:'RAG goes <em>multi-user</em>', p:'Drone RAG with auth, OCR ingest and memory; Airflow pipelines over 15+ Odia news sources; multimodal meeting and incident insights on Gemini.'},
  {y:'2024', c:'llm', h:'Training an <em>Odia LLM</em>', p:'Continued pre-training and LoRA fine-tuning of Llama-3 for Odia, GGUF export for local inference, an offline voice assistant, face search on Postgres.'},
- {y:'2023', c:'prod', h:'ML meets <em>hardware</em>', p:'Real-time sensor ingestion into business systems: the start of IoT and edge work.'},
+ {y:'2023', c:'prod', h:'ML meets <em>hardware</em>', p:'Joined Things Alive. MQTT telemetry, vehicle diagnostics and real-time alerting: the start of IoT, streaming and edge work.'},
+ {y:'2021', c:'full', h:'Full stack at <em>enterprise scale</em>', p:'React and Node.js platforms for migration automation, queue-driven processing and query tuning across AWS, GCP and Azure.'},
  {y:'2020', c:'vision', h:'Vision and <em>production habits</em>', p:'3D-GANs, pedestrian attributes, MTCNN faces, mono depth. Started packaging models with configs, tests and train/infer entry points.'},
  {y:'2019', c:'genai', h:'Everything <em>from scratch</em>', p:'Neural nets, CNNs, XGBoost, word2vec and Viterbi implemented by hand. A CRNN plate reader trained on synthetic data.'},
  {y:'2017', c:'found', h:'Hackathons and <em>first models</em>', p:'Kaggle and Analytics Vidhya competitions, McKinsey and IIT-B hackathons, R and Python analytics, the first chatbots.'},
 ];
-const QUICK = ['RAG over documents','testing LLM changes in CI','fine-tuning for Indic languages','agents with MCP','Kafka, Celery & BullMQ','OpenTelemetry tracing','edge vision on Jetson'];
+const QUICK = ['RAG over documents','testing LLM changes in CI','fine-tuning for Indic languages','agents with MCP','Kafka, Celery & BullMQ','OpenTelemetry tracing','full stack Node.js & TypeORM','CI/CD & DevOps','PostgreSQL partitioning & tuning','multi-tenant security'];
 
 /* ---------- render ---------- */
 const $ = s=>document.querySelector(s);
@@ -647,7 +685,7 @@ $('#yr').textContent = new Date().getFullYear();
 
 $('#legend').innerHTML = Object.values(CAT).map(v=>`<span><i style="background:${v.c}"></i>${v.label}</span>`).join('');
 $('#chips').innerHTML = QUICK.map(q=>`<button class="chip" type="button">${q}</button>`).join('');
-const mq = ['retrieval-augmented generation','evals systems','Kafka','agents & MCP','Celery','fine-tuning','BullMQ','document AI','OpenTelemetry','MLOps','Prometheus + Grafana','production engineering','edge inference','multimodal GenAI','closed-loop verification'];
+const mq = ['retrieval-augmented generation','evals systems','Kafka','agents & MCP','Celery','fine-tuning','BullMQ','document AI','OpenTelemetry','MLOps','Prometheus + Grafana','Node.js','TypeORM','PostgreSQL tuning','Kubernetes','CI/CD pipelines','WebSocket streaming','full stack','production engineering','edge inference','multimodal GenAI','closed-loop verification'];
 $('#marq').innerHTML = [...mq,...mq].map(t=>`<span>${t}</span>`).join('');
 
 $('#caps').innerHTML = CAPS.map((c,i)=>`<div class="cap" style="--c:${col(c.c)}">
@@ -693,7 +731,7 @@ const nav=$('#nav'); addEventListener('scroll',()=>nav.classList.toggle('scrolle
 const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('seen'); io.unobserve(e.target);} }),{threshold:.12});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 const cio=new IntersectionObserver(es=>es.forEach(e=>{ if(!e.isIntersecting) return; cio.unobserve(e.target);
-  const to=+e.target.dataset.to, t0=performance.now(), plus=to>=100;
+  const to=+e.target.dataset.to, t0=performance.now(), plus=to>=10;
   (function f(t){const k=Math.min(1,(t-t0)/1400), v=Math.round(to*(1-Math.pow(1-k,3))); e.target.textContent=v+(k===1&&plus?'+':''); if(k<1) requestAnimationFrame(f);})(t0);
 }),{threshold:.5});
 document.querySelectorAll('.cnt').forEach(el=>cio.observe(el));
@@ -719,7 +757,7 @@ const pio=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ set
 document.querySelectorAll('[data-pipe]').forEach(p=>{ pio.observe(p); p.style.cursor='pointer'; p.addEventListener('click',()=>runPipe(p)); });
 
 /* ---------- retrieval ---------- */
-const SYN = {rag:'retrieval augmented generation vector rag', genai:'generative', llm:'llm language model', llms:'llm', mlops:'mlops production pipeline evaluation', eval:'evaluation', evals:'evaluation', test:'testing evaluation regression', testing:'evaluation regression', cv:'vision', vision:'vision computer', agent:'agent agents tool', agents:'agent tool', finetune:'fine tuning', 'fine-tuning':'fine tuning lora', indic:'indic odia', jetson:'jetson edge', edge:'edge jetson', production:'production deploy pipeline', docs:'document', documents:'document', ci:'ci pull request regression', ship:'ship deploy production', mcp:'mcp tool', otel:'opentelemetry', bull:'bullmq', queue:'queue bullmq celery', queues:'queue bullmq celery', observability:'observability opentelemetry', tracing:'opentelemetry tracing'};
+const SYN = {rag:'retrieval augmented generation vector rag', genai:'generative', llm:'llm language model', llms:'llm', mlops:'mlops production pipeline evaluation', eval:'evaluation', evals:'evaluation', test:'testing evaluation regression', testing:'evaluation regression', cv:'vision', vision:'vision computer', agent:'agent agents tool', agents:'agent tool', finetune:'fine tuning', 'fine-tuning':'fine tuning lora', indic:'indic odia', jetson:'jetson edge', edge:'edge jetson', production:'production deploy pipeline', docs:'document', documents:'document', ci:'ci pull request regression', ship:'ship deploy production', mcp:'mcp tool', otel:'opentelemetry', bull:'bullmq', queue:'queue bullmq celery', queues:'queue bullmq celery', observability:'observability opentelemetry', tracing:'opentelemetry tracing', kubernetes:'kubernetes devops deploy docker', k8s:'kubernetes devops deploy', devops:'devops ci cd deploy pipeline', cicd:'ci cd pipeline', 'ci/cd':'ci cd pipeline', node:'nodejs node', nodejs:'nodejs node nestjs', typeorm:'typeorm postgresql', websocket:'websocket realtime streaming', websockets:'websocket realtime streaming', streaming:'streaming websocket kafka', postgres:'postgresql postgres', postgresql:'postgresql postgres', database:'database postgresql index optimization', fullstack:'full stack', full:'full stack'};
 const STOP = new Set('a an the of to in on for and or with how do you your i me my is are what does can about over before they them it that this from by at as be any work have has did'.split(' '));
 const tok = s => s.toLowerCase().replace(/[^a-z0-9+\- ]/g,' ').split(/[\s\-]+/).filter(w=>w&&!STOP.has(w));
 const stem = w => w.replace(/(ing|ings|ed|es|s)$/,'').slice(0,8) || w;
@@ -770,7 +808,7 @@ document.querySelectorAll('.chip').forEach(c=>c.onclick=()=>ask(c.textContent));
 (function(){
   const cv=$('#space'), ctx=cv.getContext('2d'), tip=$('#tip'); let W,H,DPR, cx, cy, R;
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const centers={rag:[.9,.35,.2],llm:[-.6,.7,.3],genai:[-.85,-.35,-.25],mlops:[.35,-.85,.35],prod:[.15,.2,-.95],vision:[-.1,-.4,.9]};
+  const centers={rag:[.9,.35,.2],llm:[-.6,.7,.3],genai:[-.85,-.35,-.25],mlops:[.35,-.85,.35],prod:[.15,.2,-.95],vision:[-.1,-.4,.9],full:[.8,-.3,-.6],devops:[-.5,.1,-.85]};
   let seed=7; const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
   const g=()=>{let u=0;for(let i=0;i<4;i++)u+=rnd();return (u-2)/2;};
   const pts=[];
