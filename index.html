@@ -1,0 +1,835 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tapas Mohanty · AI Engineer</title>
+<meta name="description" content="Tapas Mohanty: AI engineer building RAG, LLM and GenAI systems, and the MLOps, evals and production engineering that keep them running.">
+<meta property="og:title" content="Tapas Mohanty · AI Engineer">
+<meta property="og:description" content="RAG, LLMs, GenAI and ML in production. Ask the portfolio a question.">
+<meta name="theme-color" content="#0a0a0f">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0a0f'/%3E%3Ccircle cx='22' cy='24' r='5' fill='%236ef2c2'/%3E%3Ccircle cx='42' cy='20' r='4' fill='%23a78bfa'/%3E%3Ccircle cx='38' cy='42' r='6' fill='%23ff6b3d'/%3E%3Cpath d='M22 24L38 42M42 20L38 42' stroke='%23efe9dd' stroke-width='2' opacity='.5'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0f; --bg2:#101018; --bg3:#161622;
+  --ink:#efe9dd; --ink2:#c9c3b7; --mute:#8b867d; --line:rgba(239,233,221,.09); --line2:rgba(239,233,221,.16);
+  --rag:#6ef2c2; --llm:#a78bfa; --genai:#ff6b3d; --mlops:#f5c86a; --prod:#6cc4ff; --vision:#ff7eb6; --found:#9b968c;
+  --serif:'Instrument Serif',Georgia,serif; --sans:'Inter Tight',system-ui,-apple-system,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+  --max:1240px; --gut:clamp(16px,4vw,48px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--genai);color:var(--bg)}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.04em}
+.serif{font-family:var(--serif);font-weight:400}
+em.s{font-family:var(--serif);font-style:italic;font-weight:400}
+
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+nav.scrolled{background:rgba(10,10,15,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:600;letter-spacing:-.01em}
+.logo i{width:9px;height:9px;border-radius:50%;background:var(--rag);box-shadow:0 0 14px var(--rag);animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.35}}
+.nav-links{display:flex;gap:28px}
+.nav-links a{font-family:var(--mono);font-size:12px;color:var(--mute);transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a b{color:var(--genai);font-weight:400;margin-right:4px}
+@media(max-width:760px){.nav-links{display:none}}
+
+/* hero */
+.hero{position:relative;min-height:100vh;padding-top:96px;display:flex;flex-direction:column}
+#space{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero-glow{position:absolute;inset:0;pointer-events:none;background:
+  radial-gradient(900px 600px at 78% 40%,rgba(167,139,250,.10),transparent 60%),
+  radial-gradient(700px 500px at 10% 90%,rgba(110,242,194,.06),transparent 60%)}
+.hero .wrap{position:relative;z-index:2;flex:1;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:40px;align-items:center;width:100%;pointer-events:none}
+.hero-text{pointer-events:auto;min-width:0}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--mute);margin-bottom:28px;padding:6px 12px;border:1px solid var(--line2);border-radius:99px;background:rgba(10,10,15,.5)}
+.eyebrow span{width:6px;height:6px;border-radius:50%;background:var(--rag)}
+h1{font-size:clamp(44px,7.2vw,104px);line-height:.94;letter-spacing:-.035em;font-weight:500}
+h1 em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.01em;background:linear-gradient(100deg,var(--rag),var(--llm) 45%,var(--genai));-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.06em}
+.lede{margin-top:28px;max-width:540px;color:var(--ink2);font-size:clamp(16px,1.6vw,19px);font-weight:300}
+.lede b{color:var(--ink);font-weight:500}
+
+/* ask box */
+.ask{margin-top:36px;max-width:560px;border:1px solid var(--line2);border-radius:16px;background:rgba(16,16,24,.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);overflow:hidden;box-shadow:0 30px 80px -30px rgba(0,0,0,.8)}
+.ask-head{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid var(--line);color:var(--mute)}
+.ask-head .dots{display:flex;gap:6px}.ask-head .dots i{width:9px;height:9px;border-radius:50%;background:var(--line2)}
+.ask form{display:flex;align-items:center;gap:10px;padding:14px}
+.ask .prompt{color:var(--rag);font-family:var(--mono)}
+.ask input{flex:1;min-width:0;background:none;border:0;outline:0;color:var(--ink);font-family:var(--mono);font-size:14px}
+.ask input::placeholder{color:var(--mute)}
+.ask button{font-family:var(--mono);font-size:12px;border:1px solid var(--line2);background:var(--bg3);color:var(--ink);padding:7px 12px;border-radius:8px;cursor:pointer;transition:all .2s}
+.ask button:hover{border-color:var(--rag);color:var(--rag)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;padding:0 14px 14px}
+.chip{font-family:var(--mono);font-size:11px;padding:5px 10px;border:1px dashed var(--line2);border-radius:99px;color:var(--mute);cursor:pointer;background:none;transition:all .2s}
+.chip:hover{color:var(--ink);border-style:solid;border-color:var(--mute)}
+.answer{border-top:1px solid var(--line);padding:14px;font-size:14px;color:var(--ink2);display:none}
+.answer.on{display:block}
+.answer .trace{font-family:var(--mono);font-size:11px;color:var(--mute);margin-bottom:10px;display:flex;flex-wrap:wrap;gap:4px 14px}
+.answer .trace b{color:var(--rag);font-weight:400}
+.answer .hits{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
+.hit{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;font-family:var(--mono);font-size:12px;opacity:0;transform:translateY(4px);animation:in .4s forwards}
+.hit .bar{height:3px;background:var(--line);border-radius:3px;overflow:hidden}
+.hit .bar i{display:block;height:100%;border-radius:3px}
+.hit .nm{color:var(--ink)}
+.hit .sc{color:var(--mute)}
+@keyframes in{to{opacity:1;transform:none}}
+.gen{line-height:1.6}
+.gen b{color:var(--ink);font-weight:500}
+.cursor{display:inline-block;width:7px;height:14px;background:var(--rag);vertical-align:-2px;margin-left:2px;animation:pulse 1s steps(1) infinite}
+.disclaim{font-family:var(--mono);font-size:10.5px;color:var(--mute);margin-top:10px;opacity:.75}
+
+.hero-legend{position:absolute;right:var(--gut);bottom:32px;z-index:2;display:flex;flex-wrap:wrap;gap:14px;justify-content:flex-end;max-width:520px}
+.hero-legend span{display:flex;align-items:center;gap:6px;color:var(--mute)}
+.hero-legend i{width:7px;height:7px;border-radius:50%}
+.scroll-cue{position:absolute;left:var(--gut);bottom:32px;z-index:2;color:var(--mute);display:flex;align-items:center;gap:10px}
+.scroll-cue i{width:1px;height:36px;background:linear-gradient(var(--mute),transparent);animation:drop 2s ease-in-out infinite}
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+#tip{position:absolute;z-index:5;pointer-events:none;padding:8px 10px;border-radius:8px;background:rgba(16,16,24,.95);border:1px solid var(--line2);font-family:var(--mono);font-size:11px;color:var(--ink);opacity:0;transition:opacity .15s;max-width:240px}
+#tip small{display:block;color:var(--mute);margin-top:2px}
+@media(max-width:900px){
+  .hero .wrap{grid-template-columns:minmax(0,1fr)}
+  .ask-head span{display:none}
+  .hero{padding-bottom:120px}
+  #space{opacity:.55}
+  .hero-legend{left:var(--gut);right:var(--gut);justify-content:flex-start;bottom:24px}
+  .scroll-cue{display:none}
+}
+
+/* stats */
+.stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg2)}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:30px 0 28px;border-right:1px solid var(--line);padding-left:24px}
+.stat:first-child{padding-left:0}.stat:last-child{border-right:0}
+.stat b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(40px,5vw,64px);line-height:1;letter-spacing:-.02em}
+.stat span{color:var(--mute)}
+@media(max-width:760px){.stats .wrap{grid-template-columns:1fr 1fr}.stat:nth-child(2){border-right:0}.stat:nth-child(3){padding-left:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+
+/* sections */
+section{padding:clamp(80px,12vw,150px) 0}
+.sec-head{display:grid;grid-template-columns:200px 1fr;gap:32px;margin-bottom:64px;align-items:end}
+.stage{color:var(--mute);display:flex;flex-direction:column;gap:6px}
+.stage b{color:var(--genai);font-weight:400}
+h2{font-size:clamp(36px,5.4vw,72px);line-height:1;letter-spacing:-.03em;font-weight:500}
+h2 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--ink2)}
+.sec-sub{margin-top:18px;max-width:620px;color:var(--ink2);font-weight:300;font-size:17px}
+@media(max-width:760px){.sec-head{grid-template-columns:1fr;gap:16px;margin-bottom:40px}}
+
+/* flagship */
+.flag{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(24px,4vw,64px);padding:clamp(28px,4vw,48px);border:1px solid var(--line);border-radius:24px;background:linear-gradient(180deg,var(--bg2),var(--bg));margin-bottom:24px;overflow:hidden}
+.flag::before{content:"";position:absolute;width:520px;height:520px;border-radius:50%;filter:blur(90px);opacity:.13;top:-200px;right:-160px;background:var(--c)}
+.flag>*{position:relative}
+.flag .num{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--c)}
+.flag h3{font-size:clamp(34px,4.4vw,58px);font-weight:500;letter-spacing:-.03em;line-height:1;margin:10px 0 6px}
+.flag .tag{font-family:var(--serif);font-style:italic;font-size:clamp(19px,2vw,24px);color:var(--ink2);line-height:1.25}
+.flag p{color:var(--ink2);font-weight:300;margin-top:18px}
+.flag ul{list-style:none;margin-top:18px;display:flex;flex-direction:column;gap:8px}
+.flag li{padding-left:20px;position:relative;color:var(--ink2);font-size:15px}
+.flag li::before{content:"";position:absolute;left:0;top:.62em;width:10px;height:1px;background:var(--c)}
+.pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:22px}
+.pill{font-family:var(--mono);font-size:11px;padding:4px 9px;border-radius:6px;background:var(--bg3);color:var(--ink2);border:1px solid var(--line)}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;padding:9px 14px;border-radius:10px;border:1px solid var(--line2);transition:all .2s}
+.btn:hover{border-color:var(--c,var(--ink));color:var(--c,var(--ink))}
+.btn.solid{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn.solid:hover{background:var(--c,var(--rag));border-color:var(--c,var(--rag));color:var(--bg)}
+.btn.lock{color:var(--mute);cursor:default}
+.btn.lock:hover{border-color:var(--line2);color:var(--mute)}
+
+/* pipeline diagram */
+.pipe{border:1px solid var(--line);border-radius:16px;background:rgba(10,10,15,.6);padding:22px;align-self:center}
+.pipe-title{display:flex;justify-content:space-between;color:var(--mute);margin-bottom:18px}
+.pipe-title b{color:var(--c);font-weight:400}
+.flow{display:flex;flex-direction:column;gap:0}
+.node{display:grid;grid-template-columns:28px 1fr auto;align-items:center;gap:12px;padding:11px 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg2);position:relative;transition:border-color .3s,background .3s}
+.node .ic{width:28px;height:28px;border-radius:7px;display:grid;place-items:center;background:var(--bg3);font-family:var(--mono);font-size:11px;color:var(--c)}
+.node .t{font-size:14px;font-weight:500}
+.node .d{font-family:var(--mono);font-size:10.5px;color:var(--mute)}
+.node .st{font-family:var(--mono);font-size:10px;color:var(--mute)}
+.node.live{border-color:color-mix(in srgb,var(--c) 60%,transparent);background:color-mix(in srgb,var(--c) 8%,var(--bg2))}
+.node.live .st{color:var(--c)}
+.link{height:18px;margin-left:25px;width:2px;background:var(--line2);position:relative;overflow:hidden}
+.link::after{content:"";position:absolute;left:0;top:-10px;width:2px;height:10px;background:var(--c);opacity:0}
+.link.live::after{animation:flowdown .5s linear forwards}
+@keyframes flowdown{0%{top:-10px;opacity:1}100%{top:18px;opacity:1}}
+.branch{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.branch .node{grid-template-columns:1fr;text-align:center;padding:9px 6px;gap:2px}
+.branch .node .t{font-size:12px}
+@media(max-width:900px){.flag{grid-template-columns:1fr}}
+
+/* capability map */
+.caps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.cap{background:var(--bg);padding:32px 28px 30px;position:relative;transition:background .3s;min-height:300px;display:flex;flex-direction:column}
+.cap:hover{background:var(--bg2)}
+.cap .k{display:flex;justify-content:space-between;align-items:center;margin-bottom:34px}
+.cap .k .mono{color:var(--mute)}
+.cap .orb{width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 30% 30%,var(--c),transparent 70%);box-shadow:0 0 40px -6px var(--c);opacity:.9}
+.cap h4{font-size:26px;font-weight:500;letter-spacing:-.02em;line-height:1.1}
+.cap h4 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--c)}
+.cap p{color:var(--ink2);font-weight:300;font-size:15px;margin-top:12px;flex:1}
+.cap .uses{display:flex;flex-wrap:wrap;gap:6px;margin-top:22px}
+.cap .uses a,.cap .uses span{font-family:var(--mono);font-size:11px;padding:4px 9px;border-radius:99px;border:1px solid var(--line2);color:var(--ink2);transition:all .2s;cursor:pointer}
+.cap .uses a:hover,.cap .uses span:hover{border-color:var(--c);color:var(--c)}
+@media(max-width:980px){.caps{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.caps{grid-template-columns:1fr}.cap{min-height:0}}
+
+/* index */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.f{font-family:var(--mono);font-size:12px;padding:8px 14px;border-radius:99px;border:1px solid var(--line2);background:none;color:var(--mute);cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:8px}
+.f i{width:7px;height:7px;border-radius:50%;background:var(--c,var(--ink))}
+.f:hover{color:var(--ink)}
+.f.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.f sup{font-size:10px;opacity:.6}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{position:relative;border:1px solid var(--line);border-radius:16px;padding:22px;background:var(--bg2);display:flex;flex-direction:column;transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .3s,opacity .3s;overflow:hidden}
+.card::after{content:"";position:absolute;inset:0;border-radius:16px;pointer-events:none;background:radial-gradient(400px circle at var(--mx,50%) var(--my,0%),color-mix(in srgb,var(--c) 14%,transparent),transparent 45%);opacity:0;transition:opacity .3s}
+.card:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--c) 45%,transparent)}
+.card:hover::after{opacity:1}
+.card.hide{display:none}
+.card .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.card .cat{display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:11px;color:var(--c)}
+.card .cat i{width:6px;height:6px;border-radius:50%;background:var(--c)}
+.card .yr{font-family:var(--mono);font-size:11px;color:var(--mute)}
+.card h5{font-size:19px;font-weight:600;letter-spacing:-.01em;line-height:1.2}
+.card p{color:var(--ink2);font-size:14px;font-weight:300;margin-top:8px;flex:1}
+.card .stack{display:flex;flex-wrap:wrap;gap:5px;margin-top:16px}
+.card .stack span{font-family:var(--mono);font-size:10.5px;color:var(--mute);padding:2px 7px;border-radius:5px;background:var(--bg3)}
+.card .foot{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:11px}
+.card .foot a{color:var(--ink);display:flex;gap:6px;align-items:center}
+.card .foot a:hover{color:var(--c)}
+.card .foot .pv{color:var(--mute)}
+.card .foot .star{color:var(--mlops)}
+@media(max-width:980px){.grid{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.grid{grid-template-columns:1fr}}
+
+/* foundations strip */
+.found{margin-top:56px;border:1px dashed var(--line2);border-radius:16px;padding:24px}
+.found .mono{color:var(--mute);display:block;margin-bottom:14px}
+.found div{display:flex;flex-wrap:wrap;gap:8px}
+.found a{font-family:var(--mono);font-size:12px;padding:6px 11px;border-radius:8px;background:var(--bg2);color:var(--ink2);border:1px solid var(--line);transition:all .2s}
+.found a:hover{color:var(--ink);border-color:var(--mute)}
+
+/* timeline */
+.tl{position:relative;padding-left:0}
+.yr-row{display:grid;grid-template-columns:200px 1fr;gap:32px;padding:30px 0;border-top:1px solid var(--line);position:relative}
+.yr-row:last-child{border-bottom:1px solid var(--line)}
+.yr-row .y{font-family:var(--serif);font-size:clamp(44px,5vw,64px);line-height:.9;color:var(--mute);transition:color .4s}
+.yr-row.seen .y{color:var(--ink)}
+.yr-row h6{font-size:20px;font-weight:500;letter-spacing:-.01em}
+.yr-row h6 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--c)}
+.yr-row p{color:var(--ink2);font-weight:300;margin-top:6px;max-width:720px}
+.yr-row .bar{position:absolute;left:0;top:-1px;height:1px;width:0;background:var(--c);transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.yr-row.seen .bar{width:100%}
+@media(max-width:760px){.yr-row{grid-template-columns:1fr;gap:8px}}
+
+/* stack */
+.stack-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.sg{border-top:1px solid var(--line2);padding-top:18px}
+.sg .mono{color:var(--c);display:block;margin-bottom:14px}
+.sg ul{list-style:none;display:flex;flex-direction:column;gap:7px;color:var(--ink2);font-size:15px}
+@media(max-width:900px){.stack-grid{grid-template-columns:1fr 1fr;gap:32px 16px}}
+
+/* principles */
+.principles{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:80px}
+.pr{padding:28px;border-radius:18px;background:var(--bg2);border:1px solid var(--line)}
+.pr .serif{font-size:56px;line-height:.8;color:var(--genai);display:block;margin-bottom:12px}
+.pr h6{font-size:18px;font-weight:500}
+.pr p{color:var(--ink2);font-weight:300;font-size:15px;margin-top:8px}
+@media(max-width:900px){.principles{grid-template-columns:1fr}}
+
+/* contact */
+.contact{position:relative;overflow:hidden;border-top:1px solid var(--line)}
+.contact h2{font-size:clamp(48px,10vw,150px);line-height:.9;letter-spacing:-.045em}
+.contact h2 em{background:linear-gradient(100deg,var(--rag),var(--llm) 50%,var(--genai));-webkit-background-clip:text;background-clip:text;color:transparent}
+.contact .row{display:flex;flex-wrap:wrap;gap:12px;margin-top:48px}
+.contact .btn{font-size:14px;padding:14px 20px;border-radius:14px}
+footer{padding:28px 0 40px;color:var(--mute)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
+.rv.seen{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}*{animation:none!important}}
+
+/* marquee */
+.marq{overflow:hidden;border-bottom:1px solid var(--line);padding:22px 0;mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.marq-in{display:flex;gap:48px;width:max-content;animation:marq 60s linear infinite}
+.marq span{font-family:var(--serif);font-style:italic;font-size:28px;color:var(--mute);white-space:nowrap;display:flex;align-items:center;gap:48px}
+.marq span::after{content:"✳";font-style:normal;font-size:16px;color:var(--genai)}
+@keyframes marq{to{transform:translateX(-50%)}}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap">
+    <a href="#top" class="logo"><i></i>Tapas Mohanty</a>
+    <div class="nav-links">
+      <a href="#systems"><b>01</b>systems</a>
+      <a href="#map"><b>02</b>capabilities</a>
+      <a href="#index"><b>03</b>index</a>
+      <a href="#journey"><b>04</b>journey</a>
+      <a href="#contact"><b>05</b>contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <canvas id="space" aria-hidden="true"></canvas>
+  <div class="hero-glow"></div>
+  <div id="tip"></div>
+  <div class="wrap">
+    <div class="hero-text">
+      <div class="eyebrow mono"><span></span>AI engineer · RAG · LLMs · ML in production</div>
+      <h1>Models that<br>survive <em>production.</em></h1>
+      <p class="lede">I build <b>RAG pipelines, LLM applications and GenAI systems</b>, plus the evals systems, Kafka/Celery/BullMQ pipelines and OpenTelemetry-traced platforms that keep them correct after launch. Every dot on this page is a project. Ask it something.</p>
+
+      <div class="ask" id="ask">
+        <div class="ask-head mono"><div class="dots"><i></i><i></i><i></i></div><span>retrieve ⟶ rank ⟶ generate</span></div>
+        <form id="askForm" autocomplete="off">
+          <span class="prompt">❯</span>
+          <input id="q" type="text" placeholder="e.g. how do you test LLM changes before they ship?" aria-label="Ask the portfolio">
+          <button type="submit">ask ↵</button>
+        </form>
+        <div class="chips" id="chips"></div>
+        <div class="answer" id="answer"></div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-legend mono" id="legend"></div>
+  <div class="scroll-cue mono"><i></i>scroll</div>
+</header>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><b class="cnt" data-to="200">0</b><span class="mono">repositories built, 2017 → today</span></div>
+    <div class="stat"><b class="cnt" data-to="9">0</b><span class="mono">years shipping ML</span></div>
+    <div class="stat"><b>3</b><span class="mono">LLM providers behind one interface</span></div>
+    <div class="stat"><b>PyPI<span style="color:var(--genai)">+</span>npm</b><span class="mono">open-source eval tooling</span></div>
+  </div>
+</div>
+
+<div class="marq" aria-hidden="true"><div class="marq-in" id="marq"></div></div>
+
+<!-- 01 SYSTEMS -->
+<section id="systems">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="stage mono"><b>stage 01</b>flagship systems</div>
+      <div>
+        <h2>Three systems, <em>end to end.</em></h2>
+        <p class="sec-sub">Not demos. Each one runs a pipeline with state, retries, verification and a way to tell when the AI got worse. Click a diagram to watch it run.</p>
+      </div>
+    </div>
+
+    <!-- ASSAY -->
+    <article class="flag rv" style="--c:var(--mlops)">
+      <div>
+        <span class="num">i. LLMOps · evaluation</span>
+        <h3>Assay</h3>
+        <div class="tag">"Your prompt change broke 3 cases. Here's which ones, what changed, and whether it's real or noise."</div>
+        <p>Behavioral regression testing for AI apps and agents. Each test case is compared with its own last passing run, so a pull request shows exactly how the AI's behavior moved, not just a pass/fail count.</p>
+        <ul>
+          <li>Behavior diffs: tool calls in order, cost, context, with a severity</li>
+          <li>Repeated attempts separate real regressions from chance, corrected for multiple checks</li>
+          <li>Judges calibrated against human labels, with bias and drift probes</li>
+          <li>A PR guard that refuses loosened assertions or skipped tests</li>
+          <li>Document-extraction metrics: fields, line items, tables, OCR, confidence gates</li>
+          <li>OpenTelemetry (OTLP) ingest: production traces become eval trajectories with no code changes</li>
+        </ul>
+        <div class="pills"><span class="pill">pytest plugin</span><span class="pill">Jest / Vitest</span><span class="pill">GitHub Actions</span><span class="pill">LLM-as-judge</span><span class="pill">evals system</span><span class="pill">OpenTelemetry</span><span class="pill">agents</span><span class="pill">MCP</span></div>
+        <div class="links">
+          <a class="btn solid" href="https://github.com/tap222/assay-evals" target="_blank" rel="noopener">github ↗</a>
+          <a class="btn" href="https://pypi.org/project/assay-server/" target="_blank" rel="noopener">pypi: assay-server</a>
+          <a class="btn" href="https://www.npmjs.com/package/assay-evals" target="_blank" rel="noopener">npm: assay-evals</a>
+        </div>
+      </div>
+      <div class="pipe" data-pipe>
+        <div class="pipe-title mono"><span>pull request → verdict</span><b>▶ run</b></div>
+        <div class="flow">
+          <div class="node"><div class="ic">PR</div><div><div class="t">Prompt line changed</div><div class="d">support_agent/system.md +1 −0</div></div><div class="st">queued</div></div>
+          <div class="link"></div>
+          <div class="node"><div class="ic">×8</div><div><div class="t">Run every case 8 times</div><div class="d">trajectories · tool calls · cost</div></div><div class="st">idle</div></div>
+          <div class="link"></div>
+          <div class="node"><div class="ic">Δ</div><div><div class="t">Diff against last passing run</div><div class="d">refund_flow: 8/8 → 0/8</div></div><div class="st">idle</div></div>
+          <div class="link"></div>
+          <div class="branch">
+            <div class="node"><div class="t">noise</div><div class="d">8/8→7/8</div></div>
+            <div class="node"><div class="t">inconclusive</div><div class="d">too few</div></div>
+            <div class="node"><div class="t">regression</div><div class="d">HIGH</div></div>
+          </div>
+          <div class="link"></div>
+          <div class="node"><div class="ic">✓</div><div><div class="t">PR check blocks the merge</div><div class="d">cause: system.md line 14</div></div><div class="st">idle</div></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- FOLIO -->
+    <article class="flag rv" style="--c:var(--rag)">
+      <div>
+        <span class="num">ii. document AI · GenAI in production</span>
+        <h3>Folio</h3>
+        <div class="tag">A document intelligence pipeline where every document is a state machine row.</div>
+        <p>Scans come in; structured, verified records come out. One generic stage engine runs every step the same way: take a lock, run the worker, write the stage output, advance the status, queue the next stage. Scheduled jobs restart anything that stalls.</p>
+        <ul>
+          <li>File prep → image pre-processing → OCR → classification → indexing → verification</li>
+          <li>Provider-neutral AI layer: Gemini on Vertex AI by default, Claude and Qwen per domain</li>
+          <li>FastAPI ingest, one Celery queue per stage, Beat for recovery and batch jobs</li>
+          <li>Postgres for state, Redis broker, object storage, Kafka events</li>
+        </ul>
+        <div class="pills"><span class="pill">FastAPI</span><span class="pill">Celery + Beat</span><span class="pill">Kafka</span><span class="pill">Redis</span><span class="pill">PostgreSQL</span><span class="pill">Prometheus</span><span class="pill">Vertex AI</span><span class="pill">OCR</span></div>
+        <div class="links"><span class="btn lock">🔒 private repo · walkthrough on request</span></div>
+      </div>
+      <div class="pipe" data-pipe>
+        <div class="pipe-title mono"><span>document lifecycle</span><b>▶ run</b></div>
+        <div class="flow">
+          <div class="node"><div class="ic">↓</div><div><div class="t">ingest</div><div class="d">API · bucket · batch</div></div><div class="st">idle</div></div>
+          <div class="link"></div>
+          <div class="node"><div class="ic">◐</div><div><div class="t">file prep + pre-processing</div><div class="d">split · deskew · denoise</div></div><div class="st">idle</div></div>
+          <div class="link"></div>
+          <div class="node"><div class="ic">Aa</div><div><div class="t">text extraction</div><div class="d">OCR + layout</div></div><div class="st">idle</div></div>
+          <div class="link"></div>
+          <div class="branch">
+            <div class="node"><div class="t">Gemini</div><div class="d">default</div></div>
+            <div class="node"><div class="t">Claude</div><div class="d">per domain</div></div>
+            <div class="node"><div class="t">Qwen</div><div class="d">per domain</div></div>
+          </div>
+          <div class="link"></div>
+          <div class="node"><div class="ic">#</div><div><div class="t">classify → index → verify</div><div class="d">structured fields, checked</div></div><div class="st">idle</div></div>
+          <div class="link"></div>
+          <div class="node"><div class="ic">✓</div><div><div class="t">completed</div><div class="d">published record</div></div><div class="st">idle</div></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- OPSWREN -->
+    <article class="flag rv" style="--c:var(--prod)">
+      <div>
+        <span class="num">iii. AIOps · agents · platform</span>
+        <h3>Opswren</h3>
+        <div class="tag">An AI operations platform: a request goes in, a verified change comes out.</div>
+        <p>One work-item lifecycle for every request, incident and issue. The model is a replaceable worker; state, routing, evidence, approvals and verified outcomes belong to the runtime. Runs on a backend, an Android app and an iPhone app.</p>
+        <ul>
+          <li>Prompt → AI plan → code edits on a branch → tests in a sandbox → diff for review</li>
+          <li>PR → human approval (policy engine) → merge → deploy → closed-loop verification</li>
+          <li>Infra monitoring turns alerts into incidents that verify and close themselves</li>
+          <li>Requests from GitHub, GitLab, Slack, Teams, email, WhatsApp and Sheets; results go back to the source</li>
+          <li>Bring your own model: Anthropic, OpenAI-compatible or Gemini keys</li>
+        </ul>
+        <div class="pills"><span class="pill">Python</span><span class="pill">agents</span><span class="pill">Kafka</span><span class="pill">Prometheus</span><span class="pill">Grafana</span><span class="pill">SSH + Linux agent</span><span class="pill">Kotlin</span><span class="pill">SwiftUI</span><span class="pill">Docker</span></div>
+        <div class="links"><span class="btn lock">🔒 private repos · demo on request</span></div>
+      </div>
+      <div class="pipe" data-pipe>
+        <div class="pipe-title mono"><span>work item → verified outcome</span><b>▶ run</b></div>
+        <div class="flow">
+          <div class="node"><div class="ic">@</div><div><div class="t">request arrives</div><div class="d">slack · issue · email · alert</div></div><div class="st">idle</div></div>
+          <div class="link"></div>
+          <div class="node"><div class="ic">⌖</div><div><div class="t">route + gather evidence</div><div class="d">repo · server · memory</div></div><div class="st">idle</div></div>
+          <div class="link"></div>
+          <div class="node"><div class="ic">λ</div><div><div class="t">plan, edit, test in sandbox</div><div class="d">branch + diff</div></div><div class="st">idle</div></div>
+          <div class="link"></div>
+          <div class="node"><div class="ic">⚖</div><div><div class="t">policy + human approval</div><div class="d">merge → deploy</div></div><div class="st">idle</div></div>
+          <div class="link"></div>
+          <div class="node"><div class="ic">✓</div><div><div class="t">verify, reply, close</div><div class="d">outcome saved to memory</div></div><div class="st">idle</div></div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- 02 MAP -->
+<section id="map" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="stage mono"><b>stage 02</b>capability map</div>
+      <div>
+        <h2>Where I go <em>deep.</em></h2>
+        <p class="sec-sub">Six areas, each backed by code I've shipped. Click a project to jump to it in the index.</p>
+      </div>
+    </div>
+    <div class="caps rv" id="caps"></div>
+  </div>
+</section>
+
+<!-- 03 INDEX -->
+<section id="index" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="stage mono"><b>stage 03</b>project index</div>
+      <div>
+        <h2>The <em>retrievable</em> corpus.</h2>
+        <p class="sec-sub">A curated slice of 200+ repositories. Public ones link to code; private and client-adjacent ones are described and available to walk through.</p>
+      </div>
+    </div>
+    <div class="filters rv" id="filters"></div>
+    <div class="grid" id="grid"></div>
+    <div class="found rv">
+      <span class="mono">// foundations: built from scratch, 2017–2020</span>
+      <div id="found"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 JOURNEY -->
+<section id="journey" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="stage mono"><b>stage 04</b>training history</div>
+      <div>
+        <h2>From notebooks <em>to pagers.</em></h2>
+        <p class="sec-sub">Nine years of moving from "it scores well" to "it runs well, and we'll know when it doesn't".</p>
+      </div>
+    </div>
+    <div class="tl" id="tl"></div>
+
+    <div class="principles">
+      <div class="pr rv"><span class="serif">“</span><h6>Evals before vibes</h6><p>If a prompt change can't be measured, it can't be shipped. Every AI feature gets regression cases on day one.</p></div>
+      <div class="pr rv"><span class="serif">“</span><h6>The model is a worker, not the system</h6><p>State, retries, approvals and verification live in the runtime, so models stay swappable.</p></div>
+      <div class="pr rv"><span class="serif">“</span><h6>Close the loop</h6><p>A job isn't done when the model answers. It's done when the outcome is checked and written back.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section id="stack" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="stage mono"><b>toolchain</b>what I reach for</div>
+      <div><h2>The <em>stack.</em></h2></div>
+    </div>
+    <div class="stack-grid rv">
+      <div class="sg" style="--c:var(--llm)"><span class="mono">LLMs & GenAI</span><ul><li>Gemini · Vertex AI</li><li>Claude · Anthropic SDK</li><li>OpenAI · Qwen · Llama</li><li>Ollama · llama.cpp · GGUF</li><li>Unsloth · LoRA · PEFT</li><li>LangChain · SmolAgents · MCP</li></ul></div>
+      <div class="sg" style="--c:var(--rag)"><span class="mono">Retrieval, data & queues</span><ul><li>ChromaDB · pgvector</li><li>PostgreSQL · Redis</li><li>Kafka · Airflow</li><li>Celery · BullMQ</li><li>OCR · layout parsing</li><li>TF-IDF · embeddings · rerank</li><li>Web crawling pipelines</li></ul></div>
+      <div class="sg" style="--c:var(--mlops)"><span class="mono">MLOps & evals</span><ul><li>Evals systems · LLM-as-judge</li><li>pytest · Jest · Vitest</li><li>OpenTelemetry · Langfuse</li><li>Prometheus · Grafana</li><li>GitHub Actions gates</li><li>Docker · sandboxes</li></ul></div>
+      <div class="sg" style="--c:var(--vision)"><span class="mono">Vision, edge & apps</span><ul><li>YOLO · CLIP · CRNN</li><li>PyTorch · TensorFlow · Keras</li><li>Jetson · MQTT · sensor fusion</li><li>FastAPI · Django · NestJS</li><li>TypeScript · React · Next.js</li><li>Kotlin · SwiftUI</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="stage mono rv" style="margin-bottom:28px"><b>stage 05</b>serve</div>
+    <h2 class="rv">Let's build something<br>that <em>stays up.</em></h2>
+    <p class="sec-sub rv">Open to roles and collaborations in GenAI platforms, RAG, LLM evaluation and ML infrastructure. Happy to walk through any private project live.</p>
+    <div class="row rv">
+      <a class="btn solid" style="--c:var(--rag)" href="https://www.linkedin.com/in/tapas-mohanty/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="btn" style="--c:var(--llm)" href="https://github.com/tap222" target="_blank" rel="noopener">GitHub · tap222 ↗</a>
+      <a class="btn" style="--c:var(--mlops)" href="https://github.com/tap222/assay-evals" target="_blank" rel="noopener">Start with Assay ↗</a>
+    </div>
+  </div>
+</section>
+<footer><div class="wrap mono"><span>© <span id="yr"></span> Tapas Mohanty</span><span>hand-built · no framework · retrieval runs in your browser</span></div></footer>
+
+<script>
+const CAT = {
+  rag:   {label:'RAG & retrieval', c:'#6ef2c2'},
+  llm:   {label:'LLMs & agents',   c:'#a78bfa'},
+  genai: {label:'Generative AI',   c:'#ff6b3d'},
+  mlops: {label:'MLOps & evals',   c:'#f5c86a'},
+  prod:  {label:'Production eng.', c:'#6cc4ff'},
+  vision:{label:'Vision & edge',   c:'#ff7eb6'},
+};
+const GH = 'https://github.com/tap222/';
+// repo:null = private
+const P = [
+ {id:'assay',  n:'Assay', cat:'mlops', y:2026, repo:'assay-evals', star:16, flag:1,
+  d:'Behavioral regression testing for AI apps and agents: pytest plugin, Jest/Vitest helper and PR gate. Diffs behavior against the last passing run and separates real regressions from noise.',
+  s:['Python','TypeScript','pytest','OpenTelemetry','GitHub Actions'], k:'opentelemetry otel otlp tracing observability evals system evaluation evals llmops testing regression ci pull request judge calibration agents prompt change llm quality monitoring document extraction metrics test before ship'},
+ {id:'folio',  n:'Folio', cat:'rag', y:2026, repo:null, flag:1,
+  d:'Document AI pipeline: file prep, pre-processing, OCR, classification, indexing and verification as a state machine per document. Gemini, Claude and Qwen behind one provider interface.',
+  s:['FastAPI','Celery','Kafka','Postgres','Vertex AI'], k:'kafka celery queue workers redis prometheus document ai ocr extraction pipeline gemini claude qwen vertex genai production celery state machine indexing classification structured multi provider llm'},
+ {id:'opswren',n:'Opswren', cat:'prod', y:2026, repo:null, flag:1,
+  d:'AI operations platform. Requests and alerts become work items: plan, code edit, sandbox tests, approval, deploy, verification. Backend plus Android and iOS apps.',
+  s:['Python','Kotlin','SwiftUI','Docker'], k:'kafka prometheus grafana observability aiops agents devops deploy incident monitoring autonomous coding agent approval policy sandbox platform production engineering mobile slack github'},
+ {id:'iot',n:'Industrial IoT + AI platform', cat:'prod', y:2026, repo:null,
+  d:'Event-driven backend for sensor fleets: Kafka streams feed alarm watchers, BullMQ job queues run workflows and device onboarding, and AI workflows are traced with Langfuse and OpenTelemetry.',
+  s:['NestJS','Kafka','BullMQ','Langfuse','OpenTelemetry'], k:'kafka bullmq bull queue jobs event driven streaming iot sensors alarms observability tracing opentelemetry otel langfuse workflows nestjs production engineering'},
+ {id:'crm',n:'Booking CRM with AI receptionist', cat:'prod', y:2026, repo:null,
+  d:'Multi-platform booking CRM (web, backend, iOS/Android): BullMQ background jobs and queues, with the AI receptionist covered by Assay regression evals.',
+  s:['TypeScript','BullMQ','React Native','Assay'], k:'bullmq bull queue background jobs crm booking ai receptionist evals typescript mobile production'},
+ {id:'sqlagent',n:'Agentic SQL + MCP server', cat:'llm', y:2026, repo:null,
+  d:'Natural-language analytics over Postgres: a SmolAgents SQL agent and an MCP server exposing schema and read-only query tools. Local Qwen via Ollama, PII guardrail, feedback memory.',
+  s:['SmolAgents','MCP','Ollama','SQLAlchemy'], k:'agent mcp tool calling text to sql natural language database analytics guardrails pii local llm qwen ollama'},
+ {id:'droneRag',n:'Drone RAG', cat:'rag', y:2025, repo:null,
+  d:'Multi-user RAG app: JWT auth, document and image upload with OCR, per-user Chroma collections, threaded chat with memory, grounded answers from an LLM.',
+  s:['FastAPI','ChromaDB','OCR','React'], k:'rag retrieval augmented generation vector database chroma chat memory documents question answering knowledge base embeddings drone'},
+ {id:'odiaLLM',n:'Odia LLM', cat:'llm', y:2024, repo:null,
+  d:'Adapting Llama-3 8B to Odia: corpus crawling and synthetic and machine-translated data, continued pre-training and LoRA fine-tuning with Unsloth, merge and GGUF export for llama.cpp, evaluation harness.',
+  s:['Llama 3','Unsloth','LoRA','GGUF'], k:'fine tuning finetune lora pretraining low resource language indic odia oriya llama training dataset gguf quantization evaluation'},
+ {id:'voxivate',n:'Meeting & incident insights', cat:'genai', y:2025, repo:null,
+  d:'Audio → diarized transcript → multimodal Gemini analysis with optional PDFs and whiteboard photos. Produces minutes, action items, incident reports, sentiment and intent.',
+  s:['Gemini','diarization','multimodal'], k:'generative multimodal audio speech transcription diarization summarization meeting minutes gemini incident report'},
+ {id:'voxmorph',n:'Voxmorph Assistant', cat:'genai', y:2024, repo:null,
+  d:'A fully offline voice assistant on Llama 3.2: speech in, then summarise, rephrase, answer and draft emails without data leaving the machine.',
+  s:['Llama 3.2','speech','local inference'], k:'voice assistant offline local llm privacy speech generative on device llama'},
+ {id:'lokaltalk',n:'Odia news intelligence', cat:'rag', y:2025, repo:null,
+  d:'Airflow pipelines crawling 15+ Odia news outlets for links and article bodies, with content similarity and dedupe feeding a local-language news product.',
+  s:['Airflow','crawlers','similarity'], k:'airflow data pipeline crawling scraping news similarity dedupe odia indic etl ingestion'},
+ {id:'odiaPdf',n:'Odia PDF extractor', cat:'rag', y:2025, repo:'pdf_extractor_odia',
+  d:'Scanned Odia PDFs to structured rows: page and panel segmentation, field-level OCR, merge into spreadsheets.',
+  s:['OCR','OpenCV','pandas'], k:'ocr pdf extraction document scanned odia table structured data layout'},
+ {id:'logbench',n:'Agent benchmark task', cat:'mlops', y:2026, repo:'fix-log-report',
+  d:'A containerised agent-eval task: instructions, Docker environment, oracle solution and a verifier that scores each run with a reward.',
+  s:['Docker','verifier','agents'], k:'agent evaluation benchmark docker verifier reward terminal task harness'},
+ {id:'aegis',n:'AEGIS counter-drone ISR', cat:'vision', y:2026, repo:'aegis-drone-detection',
+  d:'Drone detection with multi-sensor fusion, field data capture and a live operator dashboard, with hardware integration and an enhancement roadmap.',
+  s:['YOLO','sensor fusion','Python'], k:'drone detection computer vision sensor fusion defense dashboard real time edge'},
+ {id:'camradar',n:'Camera + radar fusion', cat:'vision', y:2026, repo:'cam_radar_yolo',
+  d:'Hybrid YOLO + MobileCLIP detection and tracking fused with mmWave radar and IMU, gimbal control, MQTT alerting and a streaming web UI.',
+  s:['YOLO','MobileCLIP','MQTT','radar'], k:'edge vision yolo clip tracking radar fusion mqtt streaming gimbal jetson real time open vocabulary'},
+ {id:'talos',n:'TALOS edge runtime', cat:'vision', y:2026, repo:null,
+  d:'Production split of an edge vision system: Jetson model workers, a backend for device ingest, WebSocket and logs, and a separate UI. Benchmarked across 9 models.',
+  s:['Jetson','WebSocket','Docker'], k:'edge deployment jetson benchmark model serving websocket device production inference latency'},
+ {id:'face',n:'Face search on Postgres', cat:'vision', y:2024, repo:'face_recognition_postgresql', star:4,
+  d:'Face embeddings stored and searched in PostgreSQL behind a FastAPI service, with enrolment and live webcam recognition.',
+  s:['FastAPI','Postgres','embeddings'], k:'face recognition embeddings vector search postgres fastapi api similarity'},
+ {id:'textsim',n:'Text similarity in production', cat:'mlops', y:2020, repo:'Text_Similarity-Classification-production',
+  d:'An NLP similarity and classification model packaged for production: config, preprocessing, train and inference entry points, tests.',
+  s:['Python','scikit-learn','pytest'], k:'nlp text similarity classification production packaging tests mlops deployment'},
+ {id:'prodcode',n:'Production training pipeline', cat:'mlops', y:2020, repo:'Production_code',
+  d:'A reusable training skeleton: stratified folds, a model dispatcher and scripted runs, so experiments are repeatable.',
+  s:['Python','scikit-learn'], k:'mlops training pipeline cross validation folds reproducible experiments dispatcher'},
+ {id:'ticket',n:'Ticket routing', cat:'prod', y:2020, repo:'Ticket_Routing', star:1,
+  d:'Multi-label routing of support tickets with TF-IDF features and logistic regression.',
+  s:['TF-IDF','scikit-learn'], k:'classification multilabel nlp support ticket routing itsm'},
+ {id:'alpr',n:'Indian licence plate recognition', cat:'vision', y:2019, repo:'Indian_ALPR_Webcam',
+  d:'CRNN (CuDNN-LSTM and GRU variants) trained on synthetic Indian plates generated per vehicle class, with perspective and augmentation.',
+  s:['CRNN','Keras','synthetic data'], k:'ocr licence plate crnn synthetic data generation computer vision'},
+ {id:'gan3d',n:'3D-GAN in TF 2.0', cat:'genai', y:2020, repo:'tensorflow2.0-3dGAN',
+  d:'Voxel 3D generative adversarial network reimplemented in TensorFlow 2.0.',
+  s:['TensorFlow','GAN'], k:'gan generative 3d voxel tensorflow'},
+ {id:'chatbot',n:'QA chatbot service', cat:'llm', y:2024, repo:null,
+  d:'Django REST chatbot with generated question–answer training data and a retrainable model behind an API.',
+  s:['Django','DRF'], k:'chatbot question answering django api training'},
+];
+const FOUND = [
+ ['Neural network from scratch','Neural_Network_from_scratch'],['CNN in NumPy','scratch_numpy_cnn'],['XGBoost from scratch','building_xgboost_scratch'],
+ ['word2vec in Keras','word2vec_from_scratch_keras'],['CBOW & skip-gram','cbow_skip_gram_implementation'],['Viterbi','Verbiti_algorithm'],
+ ['Gradient descent variants','Different_types_gradient_descent'],['Grad-CAM','Grad_cam_conv'],['RBM topic modelling','RBM_Topic_Modelling'],
+ ['Gaussian mixtures','Gaussian_Mixture_Model'],['Fast cosine similarity','Faster_calculation_cosine_similarity'],['Gesture recognition','Gesture_Recognition'],
+ ['LSTM time series','LSTM_timeseries'],['Tiny blockchain','Creation_Tiny_Blockchain'],
+];
+const CAPS = [
+ {c:'rag', t:'RAG & <em>retrieval</em>', p:'Ingestion, OCR, chunking, vector stores and grounded answers, including the unglamorous parts: per-user isolation, chat memory and verifying what came back.', ids:['folio','droneRag','lokaltalk','odiaPdf']},
+ {c:'llm', t:'LLMs & <em>agents</em>', p:'Fine-tuning for low-resource languages, tool-using agents, MCP servers and multi-provider routing across Gemini, Claude, Qwen and local models.', ids:['odiaLLM','sqlagent','opswren','chatbot']},
+ {c:'genai', t:'Generative <em>AI</em>', p:'Multimodal products: audio to structured insight, offline assistants, and generative models from GANs to today\'s LLMs.', ids:['voxivate','voxmorph','gan3d','folio']},
+ {c:'mlops', t:'MLOps & <em>evals</em>', p:'An evals system for AI behavior: regression tests, calibrated judges, CI gates, OpenTelemetry traces turned into test cases, agent benchmarks and reproducible training.', ids:['assay','logbench','crm','textsim','prodcode']},
+ {c:'prod', t:'Production <em>engineering</em>', p:'Kafka event streams, Celery and BullMQ job queues, retries and recovery jobs, OpenTelemetry tracing, Prometheus and Grafana, policy-gated deploys. Systems that page you less.', ids:['iot','opswren','folio','crm']},
+ {c:'vision', t:'ML at the <em>edge</em>', p:'Real-time detection and tracking on Jetson-class hardware, fused with radar and IMU, streamed to operators over MQTT and WebSocket.', ids:['aegis','camradar','talos','face','alpr']},
+];
+const TL = [
+ {y:'2026', c:'mlops', h:'Evals, document AI and <em>AIOps</em>', p:'Released Assay on PyPI and npm. Built Folio\'s stage engine and multi-provider AI layer, Opswren\'s plan → test → approve → deploy → verify loop, an MCP-based SQL agent, Kafka + BullMQ event pipelines with OpenTelemetry tracing, and edge sensor-fusion systems.'},
+ {y:'2025', c:'rag', h:'RAG goes <em>multi-user</em>', p:'Drone RAG with auth, OCR ingest and memory; Airflow pipelines over 15+ Odia news sources; multimodal meeting and incident insights on Gemini.'},
+ {y:'2024', c:'llm', h:'Training an <em>Odia LLM</em>', p:'Continued pre-training and LoRA fine-tuning of Llama-3 for Odia, GGUF export for local inference, an offline voice assistant, face search on Postgres.'},
+ {y:'2023', c:'prod', h:'ML meets <em>hardware</em>', p:'Real-time sensor ingestion into business systems: the start of IoT and edge work.'},
+ {y:'2020', c:'vision', h:'Vision and <em>production habits</em>', p:'3D-GANs, pedestrian attributes, MTCNN faces, mono depth. Started packaging models with configs, tests and train/infer entry points.'},
+ {y:'2019', c:'genai', h:'Everything <em>from scratch</em>', p:'Neural nets, CNNs, XGBoost, word2vec and Viterbi implemented by hand. A CRNN plate reader trained on synthetic data.'},
+ {y:'2017', c:'found', h:'Hackathons and <em>first models</em>', p:'Kaggle and Analytics Vidhya competitions, McKinsey and IIT-B hackathons, R and Python analytics, the first chatbots.'},
+];
+const QUICK = ['RAG over documents','testing LLM changes in CI','fine-tuning for Indic languages','agents with MCP','Kafka, Celery & BullMQ','OpenTelemetry tracing','edge vision on Jetson'];
+
+/* ---------- render ---------- */
+const $ = s=>document.querySelector(s);
+const col = c => (CAT[c]||{c:'#9b968c'}).c;
+const byId = Object.fromEntries(P.map(p=>[p.id,p]));
+$('#yr').textContent = new Date().getFullYear();
+
+$('#legend').innerHTML = Object.values(CAT).map(v=>`<span><i style="background:${v.c}"></i>${v.label}</span>`).join('');
+$('#chips').innerHTML = QUICK.map(q=>`<button class="chip" type="button">${q}</button>`).join('');
+const mq = ['retrieval-augmented generation','evals systems','Kafka','agents & MCP','Celery','fine-tuning','BullMQ','document AI','OpenTelemetry','MLOps','Prometheus + Grafana','production engineering','edge inference','multimodal GenAI','closed-loop verification'];
+$('#marq').innerHTML = [...mq,...mq].map(t=>`<span>${t}</span>`).join('');
+
+$('#caps').innerHTML = CAPS.map((c,i)=>`<div class="cap" style="--c:${col(c.c)}">
+  <div class="k"><span class="mono">0${i+1} / ${CAT[c.c].label.toLowerCase()}</span><div class="orb"></div></div>
+  <h4>${c.t}</h4><p>${c.p}</p>
+  <div class="uses">${c.ids.map(id=>`<span data-go="${id}">${byId[id].n}</span>`).join('')}</div></div>`).join('');
+
+const counts = {}; P.forEach(p=>counts[p.cat]=(counts[p.cat]||0)+1);
+$('#filters').innerHTML = `<button class="f on" data-f="all">all <sup>${P.length}</sup></button>` +
+  Object.entries(CAT).map(([k,v])=>`<button class="f" data-f="${k}" style="--c:${v.c}"><i></i>${v.label} <sup>${counts[k]||0}</sup></button>`).join('');
+$('#grid').innerHTML = P.slice().sort((a,b)=>(b.flag||0)-(a.flag||0)||b.y-a.y).map(p=>`
+ <article class="card rv" id="p-${p.id}" data-cat="${p.cat}" style="--c:${col(p.cat)}">
+  <div class="top"><span class="cat"><i></i>${CAT[p.cat].label}</span><span class="yr">${p.y}</span></div>
+  <h5>${p.n}</h5><p>${p.d}</p>
+  <div class="stack">${p.s.map(s=>`<span>${s}</span>`).join('')}</div>
+  <div class="foot">${p.repo?`<a href="${GH+p.repo}" target="_blank" rel="noopener">tap222/${p.repo} ↗</a>`:`<span class="pv">🔒 private · on request</span>`}${p.star?`<span class="star">★ ${p.star}</span>`:''}</div>
+ </article>`).join('');
+$('#found').innerHTML = FOUND.map(([n,r])=>`<a href="${GH+r}" target="_blank" rel="noopener">${n}</a>`).join('');
+$('#tl').innerHTML = TL.map(t=>`<div class="yr-row rv" style="--c:${col(t.c)}"><div class="bar"></div><div class="y">${t.y}</div><div><h6>${t.h}</h6><p>${t.p}</p></div></div>`).join('');
+
+/* filters */
+document.querySelectorAll('.f').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.f').forEach(x=>x.classList.remove('on')); b.classList.add('on');
+  const f=b.dataset.f; document.querySelectorAll('.card').forEach(c=>c.classList.toggle('hide', f!=='all' && c.dataset.cat!==f));
+});
+document.querySelectorAll('[data-go]').forEach(el=>el.onclick=()=>goCard(el.dataset.go));
+function goCard(id){
+  document.querySelector('.f[data-f="all"]').click();
+  const el=document.getElementById('p-'+id); if(!el) return;
+  el.scrollIntoView({behavior:'smooth',block:'center'});
+  el.animate([{boxShadow:`0 0 0 0 ${col(byId[id].cat)}`},{boxShadow:`0 0 0 6px transparent`}],{duration:900,iterations:2});
+}
+/* card spotlight */
+document.addEventListener('pointermove',e=>{
+  const c=e.target.closest&&e.target.closest('.card'); if(!c) return;
+  const r=c.getBoundingClientRect(); c.style.setProperty('--mx',(e.clientX-r.left)+'px'); c.style.setProperty('--my',(e.clientY-r.top)+'px');
+});
+
+/* nav */
+const nav=$('#nav'); addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>30),{passive:true});
+
+/* reveal + counters + pipelines */
+const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('seen'); io.unobserve(e.target);} }),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+const cio=new IntersectionObserver(es=>es.forEach(e=>{ if(!e.isIntersecting) return; cio.unobserve(e.target);
+  const to=+e.target.dataset.to, t0=performance.now(), plus=to>=100;
+  (function f(t){const k=Math.min(1,(t-t0)/1400), v=Math.round(to*(1-Math.pow(1-k,3))); e.target.textContent=v+(k===1&&plus?'+':''); if(k<1) requestAnimationFrame(f);})(t0);
+}),{threshold:.5});
+document.querySelectorAll('.cnt').forEach(el=>cio.observe(el));
+
+function runPipe(pipe){
+  if(pipe._running) return; pipe._running=true;
+  const steps=[...pipe.querySelector('.flow').children];
+  steps.forEach(s=>{s.classList.remove('live'); s.querySelectorAll?.('.node').forEach(n=>n.classList.remove('live')); const st=s.querySelector?.(':scope > .st'); if(st) st.textContent='idle';});
+  let i=0;
+  (function next(){
+    if(i>=steps.length){ pipe._running=false; return; }
+    const s=steps[i++];
+    if(s.classList.contains('link')){ s.classList.remove('live'); void s.offsetWidth; s.classList.add('live'); setTimeout(next,320); return; }
+    if(s.classList.contains('branch')){
+      const ns=[...s.children]; ns.forEach((n,j)=>setTimeout(()=>n.classList.add('live'),j*140));
+      setTimeout(()=>{ ns.forEach((n,j)=>{ if(j!==ns.length-1 && pipe.closest('.flag').querySelector('h3').textContent==='Assay') n.classList.remove('live'); }); next(); },620); return;
+    }
+    s.classList.add('live'); const st=s.querySelector(':scope > .st'); if(st) st.textContent='running';
+    setTimeout(()=>{ if(st) st.textContent='done ✓'; next(); },520);
+  })();
+}
+const pio=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ setTimeout(()=>runPipe(e.target),400); pio.unobserve(e.target);} }),{threshold:.5});
+document.querySelectorAll('[data-pipe]').forEach(p=>{ pio.observe(p); p.style.cursor='pointer'; p.addEventListener('click',()=>runPipe(p)); });
+
+/* ---------- retrieval ---------- */
+const SYN = {rag:'retrieval augmented generation vector rag', genai:'generative', llm:'llm language model', llms:'llm', mlops:'mlops production pipeline evaluation', eval:'evaluation', evals:'evaluation', test:'testing evaluation regression', testing:'evaluation regression', cv:'vision', vision:'vision computer', agent:'agent agents tool', agents:'agent tool', finetune:'fine tuning', 'fine-tuning':'fine tuning lora', indic:'indic odia', jetson:'jetson edge', edge:'edge jetson', production:'production deploy pipeline', docs:'document', documents:'document', ci:'ci pull request regression', ship:'ship deploy production', mcp:'mcp tool', otel:'opentelemetry', bull:'bullmq', queue:'queue bullmq celery', queues:'queue bullmq celery', observability:'observability opentelemetry', tracing:'opentelemetry tracing'};
+const STOP = new Set('a an the of to in on for and or with how do you your i me my is are what does can about over before they them it that this from by at as be any work have has did'.split(' '));
+const tok = s => s.toLowerCase().replace(/[^a-z0-9+\- ]/g,' ').split(/[\s\-]+/).filter(w=>w&&!STOP.has(w));
+const stem = w => w.replace(/(ing|ings|ed|es|s)$/,'').slice(0,8) || w;
+const docs = P.map(p=>{
+  const bag={}; const add=(t,w)=>tok(t).forEach(x=>{const k=stem(x); bag[k]=(bag[k]||0)+w;});
+  add(p.n,3); add(p.k,2); add(p.d,1); add(p.s.join(' '),1.5); add(CAT[p.cat].label,1.5);
+  return bag;
+});
+const df={}; docs.forEach(b=>Object.keys(b).forEach(k=>df[k]=(df[k]||0)+1));
+const idf = k => Math.log(1+P.length/((df[k]||0)+.5));
+function search(q){
+  let terms=tok(q); terms=terms.flatMap(t=>SYN[t]?[t,...tok(SYN[t])]:[t]).map(stem);
+  terms=[...new Set(terms)];
+  const scores=docs.map((b,i)=>{ let s=0; terms.forEach(t=>{ if(b[t]) s+=idf(t)*(1+Math.log(b[t])); }); return {i,s:s*(P[i].flag?1.12:1)}; });
+  scores.sort((a,b)=>b.s-a.s);
+  const top=scores.filter(x=>x.s>0).slice(0,4); const mx=top[0]?.s||1;
+  return {terms, hits: top.map(x=>({p:P[x.i], score: .55 + .44*(x.s/mx)*(1-.05*top.indexOf(x))}))};
+}
+const ans=$('#answer'); let streamTimer=null;
+function ask(q){
+  q=q.trim(); if(!q) return; $('#q').value=q;
+  const t0=performance.now(); const {terms,hits}=search(q); const ms=(performance.now()-t0+0.4).toFixed(1);
+  clearInterval(streamTimer);
+  window.SPACE && SPACE.query(hits.map(h=>h.p.id));
+  if(!hits.length){
+    ans.innerHTML=`<div class="trace mono"><span>query → <b>${terms.length}</b> terms</span><span>k=0</span></div><div class="gen">Nothing in the index matched that. Try “RAG”, “agents”, “evaluation” or “edge vision”, or reach out on <a href="https://www.linkedin.com/in/tapas-mohanty/" style="text-decoration:underline">LinkedIn</a>.</div>`;
+    ans.classList.add('on'); return;
+  }
+  ans.innerHTML=`<div class="trace mono"><span>tokens → <b>${terms.length}</b></span><span>corpus → <b>${P.length}</b> docs</span><span>top-k → <b>${hits.length}</b></span><span>${ms} ms</span></div>
+   <div class="hits">${hits.map((h,i)=>`<div class="hit" style="animation-delay:${i*90}ms"><span class="nm">${h.p.n}</span><div class="bar"><i style="width:${h.score*100}%;background:${col(h.p.cat)}"></i></div><span class="sc">${h.score.toFixed(2)}</span></div>`).join('')}</div>
+   <div class="gen" id="gen"></div><div class="disclaim">// keyword retrieval over this page's project index, in your browser. no LLM call.</div>`;
+  ans.classList.add('on');
+  const [a,...rest]=hits.map(h=>h.p);
+  const first=a.d.split('. ')[0].replace(/\.$/,'');
+  let text=`**${a.n}** is the closest match: ${first.charAt(0).toLowerCase()+first.slice(1)}.`;
+  if(rest.length) text+=` Related work: ${rest.map(r=>'**'+r.n+'**').join(', ')}.`;
+  text+=` Built with ${[...new Set(hits.flatMap(h=>h.p.s))].slice(0,5).join(', ')}.`;
+  const words=text.split(' '); let i=0; const g=$('#gen');
+  streamTimer=setInterval(()=>{
+    i++; g.innerHTML=words.slice(0,i).join(' ').replace(/\*\*(.+?)\*\*/g,'<b>$1</b>')+(i<words.length?'<span class="cursor"></span>':'');
+    if(i>=words.length){ clearInterval(streamTimer); g.innerHTML += ` <a href="#p-${a.id}" style="color:${col(a.cat)};font-family:var(--mono);font-size:12px" onclick="event.preventDefault();goCard('${a.id}')">open ${a.n} →</a>`; }
+  },38);
+}
+$('#askForm').onsubmit=e=>{e.preventDefault(); ask($('#q').value);};
+document.querySelectorAll('.chip').forEach(c=>c.onclick=()=>ask(c.textContent));
+
+/* ---------- embedding space ---------- */
+(function(){
+  const cv=$('#space'), ctx=cv.getContext('2d'), tip=$('#tip'); let W,H,DPR, cx, cy, R;
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const centers={rag:[.9,.35,.2],llm:[-.6,.7,.3],genai:[-.85,-.35,-.25],mlops:[.35,-.85,.35],prod:[.15,.2,-.95],vision:[-.1,-.4,.9]};
+  let seed=7; const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
+  const g=()=>{let u=0;for(let i=0;i<4;i++)u+=rnd();return (u-2)/2;};
+  const pts=[];
+  P.forEach(p=>{const c=centers[p.cat]; pts.push({x:c[0]+g()*.32,y:c[1]+g()*.32,z:c[2]+g()*.32,c:col(p.cat),r:p.flag?5.5:3.4,p,label:p.flag||p.star});});
+  for(let i=0;i<240;i++){const ks=Object.keys(centers),k=ks[i%ks.length],c=centers[k],sp=.55+rnd()*.6;
+    pts.push({x:c[0]*(.5+rnd()*.6)+g()*sp,y:c[1]*(.5+rnd()*.6)+g()*sp,z:c[2]*(.5+rnd()*.6)+g()*sp,c:CAT[k].c,r:.6+rnd()*1.1,dust:1});}
+  let rotY=0,rotX=-.25,tY=0,tX=-.25,mx=-1,my=-1,hover=null,qIds=[],qT=0;
+  function size(){DPR=Math.min(2,devicePixelRatio||1);W=cv.clientWidth;H=cv.clientHeight;cv.width=W*DPR;cv.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0);
+    const wide=W>900; cx=wide?W*.74:W*.5; cy=wide?H*.5:H*.42; R=Math.min(wide?W*.25:W*.44,H*.36);}
+  size(); addEventListener('resize',size);
+  cv.parentElement.addEventListener('pointermove',e=>{const r=cv.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top;tY=(mx/W-.5)*.9;tX=-.25+(my/H-.5)*.5;});
+  cv.parentElement.addEventListener('pointerleave',()=>{mx=my=-1;});
+  cv.parentElement.addEventListener('click',e=>{ if(hover && !e.target.closest('.ask')) goCard(hover.p.id); });
+  window.SPACE={query(ids){qIds=ids;qT=performance.now();}};
+  let auto=0;
+  function proj(p){
+    const cy_=Math.cos(rotY),sy=Math.sin(rotY),cx_=Math.cos(rotX),sx=Math.sin(rotX);
+    let x=p.x*cy_-p.z*sy, z=p.x*sy+p.z*cy_; let y=p.y*cx_-z*sx; z=p.y*sx+z*cx_;
+    const f=2.6/(2.6+z); return {sx:cx+x*R*f, sy:cy+y*R*f, f, z};
+  }
+  function frame(t){
+    if(!reduce) auto+=.0012; rotY+=((tY+auto)-rotY)*.04; rotX+=(tX-rotX)*.04;
+    ctx.clearRect(0,0,W,H);
+    const pr=pts.map(p=>({p,...proj(p)})).sort((a,b)=>b.z-a.z);
+    // orbit rings
+    ctx.strokeStyle='rgba(239,233,221,.05)'; ctx.lineWidth=1;
+    for(const s of [1,.66]){ctx.beginPath();ctx.ellipse(cx,cy,R*1.25*s,R*.42*s,0,0,Math.PI*2);ctx.stroke();}
+    // neighbour edges between real projects of same cat
+    const reals=pr.filter(o=>!o.p.dust);
+    ctx.lineWidth=.6;
+    for(let i=0;i<reals.length;i++)for(let j=i+1;j<reals.length;j++){const a=reals[i],b=reals[j]; if(a.p.p.cat!==b.p.p.cat) continue;
+      ctx.strokeStyle=a.p.c+'22'; ctx.beginPath();ctx.moveTo(a.sx,a.sy);ctx.lineTo(b.sx,b.sy);ctx.stroke();}
+    // query rays
+    const qa=Math.min(1,(t-qT)/700), active=qIds.length&&(t-qT<14000);
+    if(active){
+      const fade=Math.max(0,1-Math.max(0,(t-qT-11000)/3000));
+      const qx=cx, qy=cy; ctx.fillStyle=`rgba(239,233,221,${.9*fade})`; ctx.beginPath(); ctx.arc(qx,qy,4+2*Math.sin(t/200),0,7); ctx.fill();
+      qIds.forEach((id,k)=>{const o=reals.find(r=>r.p.p.id===id); if(!o) return; const kk=Math.max(0,Math.min(1,qa*1.6-k*.18));
+        const ex=qx+(o.sx-qx)*kk, ey=qy+(o.sy-qy)*kk;
+        const gr=ctx.createLinearGradient(qx,qy,o.sx,o.sy); gr.addColorStop(0,`rgba(239,233,221,${.0})`); gr.addColorStop(1,o.p.c);
+        ctx.globalAlpha=fade*(1-k*.18); ctx.strokeStyle=gr; ctx.lineWidth=1.6-k*.25; ctx.setLineDash([4,4]); ctx.lineDashOffset=-t/40;
+        ctx.beginPath(); ctx.moveTo(qx,qy); ctx.lineTo(ex,ey); ctx.stroke(); ctx.setLineDash([]); ctx.globalAlpha=1;});
+    }
+    hover=null; let hd=14;
+    for(const o of pr){
+      const isQ=active&&qIds.includes(o.p.p?.id); const a=o.p.dust?.18+.25*o.f*.6:(active&&!isQ?.35:.95);
+      const r=o.p.r*o.f*(isQ?1.6:1);
+      if(!o.p.dust){ const glow=ctx.createRadialGradient(o.sx,o.sy,0,o.sx,o.sy,r*5); glow.addColorStop(0,o.p.c+(isQ?'66':'33')); glow.addColorStop(1,o.p.c+'00'); ctx.fillStyle=glow; ctx.beginPath(); ctx.arc(o.sx,o.sy,r*5,0,7); ctx.fill();
+        const d=Math.hypot(mx-o.sx,my-o.sy); if(d<hd){hd=d;hover=o;} }
+      ctx.globalAlpha=a; ctx.fillStyle=o.p.c; ctx.beginPath(); ctx.arc(o.sx,o.sy,Math.max(.5,r),0,7); ctx.fill(); ctx.globalAlpha=1;
+      if(!o.p.dust && (o.p.label||isQ) && W>640){ ctx.font=`${isQ?12:11}px JetBrains Mono, monospace`; ctx.fillStyle=isQ?'#efe9dd':'rgba(239,233,221,.55)'; ctx.fillText(o.p.p.n,o.sx+r+7,o.sy+4); }
+    }
+    if(hover){ cv.style.cursor='pointer'; tip.style.opacity=1; tip.innerHTML=`${hover.p.p.n}<small>${CAT[hover.p.p.cat].label} · ${hover.p.p.y} · click to open</small>`;
+      tip.style.left=Math.min(W-250,hover.sx+14)+'px'; tip.style.top=(hover.sy-46)+'px'; ctx.strokeStyle=hover.p.c; ctx.lineWidth=1; ctx.beginPath(); ctx.arc(hover.sx,hover.sy,hover.p.r*hover.f+6,0,7); ctx.stroke(); }
+    else { tip.style.opacity=0; cv.style.cursor=''; }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
