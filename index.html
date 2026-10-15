@@ -236,6 +236,25 @@ h2 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--ink
 .yr-row.seen .bar{width:100%}
 @media(max-width:760px){.yr-row{grid-template-columns:1fr;gap:8px}}
 
+/* model registry */
+.reg{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--bg2)}
+.reg-h,.rg{display:grid;grid-template-columns:200px 1.3fr 1fr 1.5fr;gap:24px;padding:18px 26px;align-items:center}
+.reg-h{color:var(--mute);border-bottom:1px solid var(--line);background:var(--bg)}
+.rg{border-bottom:1px solid var(--line);transition:background .25s;position:relative}
+.rg:last-child{border-bottom:0}
+.rg::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--c);transform:scaleY(0);transition:transform .3s}
+.rg:hover{background:var(--bg3)}.rg:hover::before{transform:scaleY(1)}
+.fam{font-weight:600;font-size:17px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.fam i{width:10px;height:10px;border-radius:3px;background:var(--c);box-shadow:0 0 14px var(--c)}
+.fam small{font-family:var(--mono);font-size:11px;font-weight:400;color:var(--mute)}
+.ms{font-size:15px;color:var(--ink)}
+.via{color:var(--c)}
+.use{color:var(--ink2);font-size:14px;font-weight:300}
+.route{margin-top:20px;display:flex;gap:20px;align-items:baseline;padding:20px 26px;border:1px dashed var(--line2);border-radius:16px}
+.route .mono{color:var(--genai);white-space:nowrap}
+.route p{font-family:var(--serif);font-style:italic;font-size:clamp(19px,2vw,24px);color:var(--ink2);line-height:1.3}
+@media(max-width:900px){.reg-h{display:none}.rg{grid-template-columns:1fr;gap:6px;padding:20px}.route{flex-direction:column;gap:8px}}
+
 /* experience */
 .xp{border-top:1px solid var(--line)}
 .xr{display:grid;grid-template-columns:200px 1fr;gap:32px;padding:28px 0;border-bottom:1px solid var(--line)}
@@ -290,9 +309,10 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
     <div class="nav-links">
       <a href="#systems"><b>01</b>systems</a>
       <a href="#map"><b>02</b>capabilities</a>
-      <a href="#index"><b>03</b>index</a>
-      <a href="#experience"><b>04</b>experience</a>
-      <a href="#contact"><b>05</b>contact</a>
+      <a href="#models"><b>03</b>models</a>
+      <a href="#index"><b>04</b>index</a>
+      <a href="#experience"><b>05</b>experience</a>
+      <a href="#contact"><b>06</b>contact</a>
     </div>
   </div>
 </nav>
@@ -464,6 +484,34 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   </div>
 </section>
 
+<!-- MODELS -->
+<section id="models" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="stage mono"><b>model registry</b>what's in production</div>
+      <div>
+        <h2>The models I <em>ship with</em></h2>
+        <p class="sec-sub">Frontier APIs, open weights on my own hardware, and the small models that do the unglamorous work. Each one is picked per task and kept behind a provider-neutral interface, so swapping one is a config change.</p>
+      </div>
+    </div>
+    <div class="reg rv">
+      <div class="reg-h mono"><span>family</span><span>models</span><span>served via</span><span>used for</span></div>
+      <div class="rg" style="--c:#6cc4ff"><div class="fam"><i></i>Gemini <small>Google</small></div><div class="ms">Gemini 3.1 Pro · Gemini 3 Flash · Gemini 2.5 Pro / Flash · Flash-Lite</div><div class="via mono">Vertex AI · AI Studio</div><div class="use">Document extraction (Folio default), multimodal meeting insights, image analysis, IoT chatbot</div></div>
+      <div class="rg" style="--c:#ff9b6b"><div class="fam"><i></i>Claude <small>Anthropic</small></div><div class="ms">Claude Opus · Claude Sonnet · Claude Haiku</div><div class="via mono">Anthropic SDK</div><div class="use">Agentic code changes in Opswren, per-domain extraction in Folio, eval judges in Assay</div></div>
+      <div class="rg" style="--c:#7ee0b5"><div class="fam"><i></i>GPT <small>OpenAI</small></div><div class="ms">GPT-5 · GPT-5 mini · GPT-4.1</div><div class="via mono">OpenAI API · compatible endpoints</div><div class="use">RAG answers, platform intelligence layer, bring-your-own-key agents</div></div>
+      <div class="rg" style="--c:#a78bfa"><div class="fam"><i></i>Qwen <small>Alibaba</small></div><div class="ms">Qwen3 1.7B / 4B / 8B · Qwen-Max · Qwen2.5-VL 72B</div><div class="via mono">Ollama · DashScope (OpenAI-compatible)</div><div class="use">Local SQL agent + MCP, vision-language document reading, low-cost routing tiers</div></div>
+      <div class="rg" style="--c:#f5c86a"><div class="fam"><i></i>Llama <small>Meta</small></div><div class="ms">Llama 3 8B (fine-tuned for Odia) · Llama 3.1 · Llama 3.2</div><div class="via mono">Unsloth · LoRA · llama.cpp / GGUF · Ollama</div><div class="use">Low-resource language model, fully offline voice assistant</div></div>
+      <div class="rg" style="--c:#c9c3b7"><div class="fam"><i></i>Small open models</div><div class="ms">Mistral · Phi-2 · Qwen3 1.7B</div><div class="via mono">Ollama · local CPU / GPU</div><div class="use">Cheap classification, planner steps, offline fallbacks</div></div>
+      <div class="rg" style="--c:#6ef2c2"><div class="fam"><i></i>Embeddings</div><div class="ms">BGE-M3 · BGE-small · Gemini Embedding · OpenAI embeddings</div><div class="via mono">sentence-transformers · APIs</div><div class="use">Vector search in ChromaDB and pgvector, semantic dedupe, retrieval for RAG</div></div>
+      <div class="rg" style="--c:#ff7eb6"><div class="fam"><i></i>Vision & speech</div><div class="ms">YOLO · MobileCLIP · CRNN · diarization pipelines</div><div class="via mono">PyTorch · Jetson · edge</div><div class="use">Drone and person detection, open-vocabulary tagging, plate OCR, meeting transcripts</div></div>
+    </div>
+    <div class="route rv">
+      <span class="mono">routing rule</span>
+      <p>Frontier model where judgment matters, a small or local model where volume matters, and an eval in front of every swap</p>
+    </div>
+  </div>
+</section>
+
 <!-- 03 INDEX -->
 <section id="index" style="padding-top:0">
   <div class="wrap">
@@ -530,7 +578,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
       <div><h2>The <em>stack</em></h2></div>
     </div>
     <div class="stack-grid rv">
-      <div class="sg" style="--c:var(--llm)"><span class="mono">LLMs & GenAI</span><ul><li>Gemini · Vertex AI</li><li>Claude · OpenAI · Qwen · Llama</li><li>Ollama · llama.cpp · GGUF</li><li>Unsloth · LoRA · PEFT</li><li>LangChain · SmolAgents · MCP</li></ul></div>
+      <div class="sg" style="--c:var(--llm)"><span class="mono">LLMs & GenAI</span><ul><li>Gemini 3.1 Pro / 3 Flash · Vertex AI</li><li>Claude Opus / Sonnet / Haiku</li><li>GPT-5 · GPT-4.1 · Qwen3 · Llama 3</li><li>Ollama · llama.cpp · GGUF</li><li>Unsloth · LoRA · PEFT</li><li>LangChain · SmolAgents · MCP</li></ul></div>
       <div class="sg" style="--c:var(--rag)"><span class="mono">RAG & retrieval</span><ul><li>ChromaDB · pgvector</li><li>Embeddings · rerank · TF-IDF</li><li>OCR · layout parsing</li><li>Airflow crawling pipelines</li><li>Grounded answers + citations</li></ul></div>
       <div class="sg" style="--c:var(--mlops)"><span class="mono">MLOps & evals</span><ul><li>Evals systems · LLM-as-judge</li><li>pytest · Jest · Vitest</li><li>Regression gates in CI</li><li>Agent benchmarks · sandboxes</li><li>Reproducible training</li></ul></div>
       <div class="sg" style="--c:var(--prod)"><span class="mono">Observability</span><ul><li>OpenTelemetry · OTLP</li><li>Langfuse tracing</li><li>Prometheus · Grafana</li><li>Alerting → incidents</li><li>Cost & latency tracking</li></ul></div>
@@ -577,10 +625,10 @@ const P = [
   s:['Python','TypeScript','pytest','OpenTelemetry','GitHub Actions'], k:'opentelemetry otel otlp tracing observability evals system evaluation evals llmops testing regression ci pull request judge calibration agents prompt change llm quality monitoring document extraction metrics test before ship'},
  {id:'folio',  n:'Folio', cat:'rag', y:2026, repo:null, flag:1,
   d:'Document AI pipeline: file prep, pre-processing, OCR, classification, indexing and verification as a state machine per document. Gemini, Claude and Qwen behind one provider interface.',
-  s:['FastAPI','Celery','Kafka','Postgres','Vertex AI'], k:'kafka celery queue workers redis prometheus document ai ocr extraction pipeline gemini claude qwen vertex genai production celery state machine indexing classification structured multi provider llm'},
+  s:['FastAPI','Celery','Kafka','Postgres','Vertex AI'], k:'kafka celery queue workers redis prometheus document ai ocr extraction pipeline gemini 3 flash pro claude qwen vl vision language vertex genai production celery state machine indexing classification structured multi provider llm'},
  {id:'opswren',n:'Opswren', cat:'devops', y:2026, repo:null, flag:1,
   d:'AI operations platform. Requests and alerts become work items: plan, code edit, sandbox tests, approval, deploy, verification. Backend plus Android and iOS apps.',
-  s:['Python','Docker','CI/CD','Prometheus','Kotlin','SwiftUI'], k:'devops ci cd pipeline deployment kubernetes infrastructure kafka prometheus grafana observability aiops agents devops deploy incident monitoring autonomous coding agent approval policy sandbox platform production engineering mobile slack github'},
+  s:['Python','Docker','CI/CD','Prometheus','Kotlin','SwiftUI'], k:'claude gpt gemini byok devops ci cd pipeline deployment kubernetes infrastructure kafka prometheus grafana observability aiops agents devops deploy incident monitoring autonomous coding agent approval policy sandbox platform production engineering mobile slack github'},
  {id:'iot',n:'Connected-vehicle & IoT platform', cat:'prod', y:2025, repo:null,
   d:'Microservices for vehicle diagnostics: MQTT telemetry ingest, DTC fault management, firmware-flashing workflows, live tracking and trips. Kafka feeds alarm watchers, BullMQ runs workflows, and a RAG chatbot answers technical questions, traced with Langfuse and OpenTelemetry.',
   s:['Node.js','NestJS','MQTT','Kafka','BullMQ','RAG','OpenTelemetry'], k:'iot connected vehicle automotive diagnostics dtc firmware flashing mqtt telemetry streaming kafka bullmq bull queue jobs event driven alarms alerts rag chatbot embeddings semantic search langfuse opentelemetry otel tracing observability nodejs node nestjs microservices production engineering'},
@@ -595,7 +643,7 @@ const P = [
   s:['Node.js','NestJS','TypeORM','PostgreSQL','Socket.IO','BullMQ','GitHub Actions'], k:'full stack fullstack nodejs node nestjs typescript typeorm postgresql postgres database optimization index indexing query performance websocket socket realtime streaming redis bullmq bull queue background jobs ci cd pipeline github actions deploy crm booking ai receptionist evals mobile react'},
  {id:'sqlagent',n:'Agentic SQL + MCP server', cat:'llm', y:2026, repo:null,
   d:'Natural-language analytics over Postgres: a SmolAgents SQL agent and an MCP server exposing schema and read-only query tools. Local Qwen via Ollama, PII guardrail, feedback memory.',
-  s:['SmolAgents','MCP','Ollama','SQLAlchemy'], k:'agent mcp tool calling text to sql natural language database analytics guardrails pii local llm qwen ollama'},
+  s:['SmolAgents','MCP','Ollama','SQLAlchemy'], k:'qwen3 8b agent mcp tool calling text to sql natural language database analytics guardrails pii local llm qwen ollama'},
  {id:'droneRag',n:'Drone RAG', cat:'rag', y:2025, repo:null,
   d:'Multi-user RAG app: JWT auth, document and image upload with OCR, per-user Chroma collections, threaded chat with memory, grounded answers from an LLM.',
   s:['FastAPI','ChromaDB','OCR','React'], k:'rag retrieval augmented generation vector database chroma chat memory documents question answering knowledge base embeddings drone'},
@@ -658,7 +706,7 @@ const FOUND = [
 const CAPS = [
  {c:'rag', t:'RAG & <em>retrieval</em>', p:'Ingestion, OCR, chunking, vector stores and grounded answers, including the unglamorous parts: per-user isolation, chat memory and verifying what came back.', ids:['folio','droneRag','lokaltalk','odiaPdf']},
  {c:'llm', t:'LLMs & <em>agents</em>', p:'Fine-tuning for low-resource languages, tool-using agents, MCP servers and multi-provider routing across Gemini, Claude, Qwen and local models.', ids:['odiaLLM','sqlagent','opswren','chatbot']},
- {c:'genai', t:'Generative <em>AI</em>', p:'Multimodal products: audio to structured insight, offline assistants, and generative models from GANs to today\'s LLMs.', ids:['voxivate','voxmorph','gan3d','folio']},
+ {c:'genai', t:'Generative <em>AI</em>', p:'Multimodal products on Gemini, Claude, GPT, Qwen and Llama: audio to structured insight, vision-language document reading, offline assistants, and generative models from GANs to today\'s LLMs.', ids:['voxivate','voxmorph','gan3d','folio']},
  {c:'mlops', t:'MLOps & <em>evals</em>', p:'An evals system for AI behavior: regression tests, calibrated judges, CI gates, OpenTelemetry traces turned into test cases, agent benchmarks and reproducible training.', ids:['assay','logbench','crm','textsim','prodcode']},
  {c:'prod', t:'Production <em>engineering</em>', p:'Kafka event streams, MQTT ingest, Celery and BullMQ job queues, PostgreSQL partitioning and query tuning, row-level security, OpenTelemetry tracing. Systems that page you less.', ids:['iot','tenant','folio','sqlagent']},
  {c:'full', t:'Full <em>stack</em>', p:'Node.js and NestJS services on TypeORM and PostgreSQL, query and index tuning, WebSocket realtime and streaming, React web and React Native, Kotlin and SwiftUI apps.', ids:['crm','tenant','iot','opswren']},
@@ -675,7 +723,7 @@ const TL = [
  {y:'2019', c:'genai', h:'Everything <em>from scratch</em>', p:'Neural nets, CNNs, XGBoost, word2vec and Viterbi implemented by hand. A CRNN plate reader trained on synthetic data.'},
  {y:'2017', c:'found', h:'Hackathons and <em>first models</em>', p:'Kaggle and Analytics Vidhya competitions, McKinsey and IIT-B hackathons, R and Python analytics, the first chatbots.'},
 ];
-const QUICK = ['RAG over documents','testing LLM changes in CI','fine-tuning for Indic languages','agents with MCP','Kafka, Celery & BullMQ','OpenTelemetry tracing','full stack Node.js & TypeORM','CI/CD & DevOps','PostgreSQL partitioning & tuning','multi-tenant security'];
+const QUICK = ['RAG over documents','testing LLM changes in CI','fine-tuning for Indic languages','agents with MCP','Kafka, Celery & BullMQ','OpenTelemetry tracing','full stack Node.js & TypeORM','CI/CD & DevOps','PostgreSQL partitioning & tuning','Gemini, Claude, GPT & Qwen'];
 
 /* ---------- render ---------- */
 const $ = s=>document.querySelector(s);
@@ -685,7 +733,7 @@ $('#yr').textContent = new Date().getFullYear();
 
 $('#legend').innerHTML = Object.values(CAT).map(v=>`<span><i style="background:${v.c}"></i>${v.label}</span>`).join('');
 $('#chips').innerHTML = QUICK.map(q=>`<button class="chip" type="button">${q}</button>`).join('');
-const mq = ['retrieval-augmented generation','evals systems','Kafka','agents & MCP','Celery','fine-tuning','BullMQ','document AI','OpenTelemetry','MLOps','Prometheus + Grafana','Node.js','TypeORM','PostgreSQL tuning','Kubernetes','CI/CD pipelines','WebSocket streaming','full stack','production engineering','edge inference','multimodal GenAI','closed-loop verification'];
+const mq = ['retrieval-augmented generation','Gemini','Claude','GPT-5','Qwen3','Llama 3','BGE-M3','evals systems','Kafka','agents & MCP','Celery','fine-tuning','BullMQ','document AI','OpenTelemetry','MLOps','Prometheus + Grafana','Node.js','TypeORM','PostgreSQL tuning','Kubernetes','CI/CD pipelines','WebSocket streaming','full stack','production engineering','edge inference','multimodal GenAI','closed-loop verification'];
 $('#marq').innerHTML = [...mq,...mq].map(t=>`<span>${t}</span>`).join('');
 
 $('#caps').innerHTML = CAPS.map((c,i)=>`<div class="cap" style="--c:${col(c.c)}">
@@ -757,7 +805,7 @@ const pio=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ set
 document.querySelectorAll('[data-pipe]').forEach(p=>{ pio.observe(p); p.style.cursor='pointer'; p.addEventListener('click',()=>runPipe(p)); });
 
 /* ---------- retrieval ---------- */
-const SYN = {rag:'retrieval augmented generation vector rag', genai:'generative', llm:'llm language model', llms:'llm', mlops:'mlops production pipeline evaluation', eval:'evaluation', evals:'evaluation', test:'testing evaluation regression', testing:'evaluation regression', cv:'vision', vision:'vision computer', agent:'agent agents tool', agents:'agent tool', finetune:'fine tuning', 'fine-tuning':'fine tuning lora', indic:'indic odia', jetson:'jetson edge', edge:'edge jetson', production:'production deploy pipeline', docs:'document', documents:'document', ci:'ci pull request regression', ship:'ship deploy production', mcp:'mcp tool', otel:'opentelemetry', bull:'bullmq', queue:'queue bullmq celery', queues:'queue bullmq celery', observability:'observability opentelemetry', tracing:'opentelemetry tracing', kubernetes:'kubernetes devops deploy docker', k8s:'kubernetes devops deploy', devops:'devops ci cd deploy pipeline', cicd:'ci cd pipeline', 'ci/cd':'ci cd pipeline', node:'nodejs node', nodejs:'nodejs node nestjs', typeorm:'typeorm postgresql', websocket:'websocket realtime streaming', websockets:'websocket realtime streaming', streaming:'streaming websocket kafka', postgres:'postgresql postgres', postgresql:'postgresql postgres', database:'database postgresql index optimization', fullstack:'full stack', full:'full stack'};
+const SYN = {rag:'retrieval augmented generation vector rag', genai:'generative', llm:'llm language model', llms:'llm', mlops:'mlops production pipeline evaluation', eval:'evaluation', evals:'evaluation', test:'testing evaluation regression', testing:'evaluation regression', cv:'vision', vision:'vision computer', agent:'agent agents tool', agents:'agent tool', finetune:'fine tuning', 'fine-tuning':'fine tuning lora', indic:'indic odia', jetson:'jetson edge', edge:'edge jetson', production:'production deploy pipeline', docs:'document', documents:'document', ci:'ci pull request regression', ship:'ship deploy production', mcp:'mcp tool', otel:'opentelemetry', bull:'bullmq', queue:'queue bullmq celery', queues:'queue bullmq celery', observability:'observability opentelemetry', tracing:'opentelemetry tracing', kubernetes:'kubernetes devops deploy docker', k8s:'kubernetes devops deploy', devops:'devops ci cd deploy pipeline', cicd:'ci cd pipeline', 'ci/cd':'ci cd pipeline', node:'nodejs node', nodejs:'nodejs node nestjs', typeorm:'typeorm postgresql', websocket:'websocket realtime streaming', websockets:'websocket realtime streaming', streaming:'streaming websocket kafka', postgres:'postgresql postgres', postgresql:'postgresql postgres', database:'database postgresql index optimization', gemini:'gemini google vertex', claude:'claude anthropic', gpt:'gpt openai', openai:'openai gpt', qwen:'qwen local ollama', llama:'llama local fine tuning', model:'llm model', models:'llm model', embedding:'embeddings vector', embeddings:'embeddings vector', fullstack:'full stack', full:'full stack'};
 const STOP = new Set('a an the of to in on for and or with how do you your i me my is are what does can about over before they them it that this from by at as be any work have has did'.split(' '));
 const tok = s => s.toLowerCase().replace(/[^a-z0-9+\- ]/g,' ').split(/[\s\-]+/).filter(w=>w&&!STOP.has(w));
 const stem = w => w.replace(/(ing|ings|ed|es|s)$/,'').slice(0,8) || w;
