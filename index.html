@@ -61,12 +61,6 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 @media(prefers-reduced-motion:reduce){.hero-bloom svg{animation:none}}
 .hero .wrap{position:relative;z-index:2;flex:1;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:40px;align-items:center;width:100%;pointer-events:none}
 .hero-text{pointer-events:auto;min-width:0}
-.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
-.tech-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px;max-width:650px}
-.tech-tags span{font-family:var(--mono);font-size:10.5px;letter-spacing:.01em;padding:5px 9px;border:1px solid var(--line2);border-radius:6px;color:var(--ink2);background:rgba(16,16,24,.62)}
-.tech-tags span:first-child{border-color:rgba(110,242,194,.38);color:var(--rag)}
-.hero-actions .btn{font-size:12px;padding:11px 14px}
-@media(max-width:760px){.hero-actions{gap:8px}.hero-actions .btn{font-size:11px;padding:10px 11px}}
 .eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--mute);margin-bottom:28px;padding:6px 12px;border:1px solid var(--line2);border-radius:99px;background:rgba(10,10,15,.5)}
 .eyebrow span{width:6px;height:6px;border-radius:50%;background:var(--rag)}
 h1{font-size:clamp(44px,7.2vw,104px);line-height:.94;letter-spacing:-.035em;font-weight:500}
@@ -103,9 +97,6 @@ h1 em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
 .cursor{display:inline-block;width:7px;height:14px;background:var(--rag);vertical-align:-2px;margin-left:2px;animation:pulse 1s steps(1) infinite}
 .disclaim{font-family:var(--mono);font-size:10.5px;color:var(--mute);margin-top:10px;opacity:.75}
 
-.hero-legend{position:absolute;right:var(--gut);bottom:32px;z-index:2;display:flex;flex-wrap:wrap;gap:14px;justify-content:flex-end;max-width:520px}
-.hero-legend span{display:flex;align-items:center;gap:6px;color:var(--mute)}
-.hero-legend i{width:7px;height:7px;border-radius:50%}
 .scroll-cue{position:absolute;left:var(--gut);bottom:32px;z-index:2;color:var(--mute);display:flex;align-items:center;gap:10px}
 .scroll-cue i{width:1px;height:36px;background:linear-gradient(var(--mute),transparent);animation:drop 2s ease-in-out infinite}
 @keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
@@ -116,18 +107,8 @@ h1 em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
   .ask-head span{display:none}
   .hero{padding-bottom:120px}
   #space{opacity:.55}
-  .hero-legend{left:var(--gut);right:var(--gut);justify-content:flex-start;bottom:24px}
   .scroll-cue{display:none}
 }
-
-/* stats */
-.stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg2)}
-.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
-.stat{padding:30px 0 28px;border-right:1px solid var(--line);padding-left:24px}
-.stat:first-child{padding-left:0}.stat:last-child{border-right:0}
-.stat b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(40px,5vw,64px);line-height:1;letter-spacing:-.02em}
-.stat span{color:var(--mute)}
-@media(max-width:760px){.stats .wrap{grid-template-columns:1fr 1fr}.stat:nth-child(2){border-right:0}.stat:nth-child(3){padding-left:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}}
 
 /* sections */
 section{padding:clamp(80px,12vw,150px) 0}
@@ -185,29 +166,7 @@ h2 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--ink
 .branch .node .t{font-size:12px}
 @media(max-width:900px){.flag{grid-template-columns:1fr}}
 
-/* capability map */
-.caps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:20px;overflow:hidden}
-.cap{background:var(--bg);padding:32px 28px 30px;position:relative;transition:background .3s;min-height:300px;display:flex;flex-direction:column}
-.cap:hover{background:var(--bg2)}
-.cap .k{display:flex;justify-content:space-between;align-items:center;margin-bottom:34px}
-.cap .k .mono{color:var(--mute)}
-.cap .orb{width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 30% 30%,var(--c),transparent 70%);box-shadow:0 0 40px -6px var(--c);opacity:.9}
-.cap h4{font-size:26px;font-weight:500;letter-spacing:-.02em;line-height:1.1}
-.cap h4 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--c)}
-.cap p{color:var(--ink2);font-weight:300;font-size:15px;margin-top:12px;flex:1}
-.cap .uses{display:flex;flex-wrap:wrap;gap:6px;margin-top:22px}
-.cap .uses a,.cap .uses span{font-family:var(--mono);font-size:11px;padding:4px 9px;border-radius:99px;border:1px solid var(--line2);color:var(--ink2);transition:all .2s;cursor:pointer}
-.cap .uses a:hover,.cap .uses span:hover{border-color:var(--c);color:var(--c)}
-@media(max-width:1100px){.caps{grid-template-columns:1fr 1fr}}
-@media(max-width:640px){.caps{grid-template-columns:1fr}.cap{min-height:0}}
-
 /* index */
-.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
-.f{font-family:var(--mono);font-size:12px;padding:8px 14px;border-radius:99px;border:1px solid var(--line2);background:none;color:var(--mute);cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:8px}
-.f i{width:7px;height:7px;border-radius:50%;background:var(--c,var(--ink))}
-.f:hover{color:var(--ink)}
-.f.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.f sup{font-size:10px;opacity:.6}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .card{position:relative;border:1px solid var(--line);border-radius:16px;padding:22px;background:var(--bg2);display:flex;flex-direction:column;transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .3s,opacity .3s;overflow:hidden}
 .card::after{content:"";position:absolute;inset:0;border-radius:16px;pointer-events:none;background:radial-gradient(400px circle at var(--mx,50%) var(--my,0%),color-mix(in srgb,var(--c) 14%,transparent),transparent 45%);opacity:0;transition:opacity .3s}
@@ -230,59 +189,6 @@ h2 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--ink
 @media(max-width:980px){.grid{grid-template-columns:1fr 1fr}}
 @media(max-width:640px){.grid{grid-template-columns:1fr}}
 
-/* foundations strip */
-.found{margin-top:56px;border:1px dashed var(--line2);border-radius:16px;padding:24px}
-.found .mono{color:var(--mute);display:block;margin-bottom:14px}
-.found div{display:flex;flex-wrap:wrap;gap:8px}
-.found a{font-family:var(--mono);font-size:12px;padding:6px 11px;border-radius:8px;background:var(--bg2);color:var(--ink2);border:1px solid var(--line);transition:all .2s}
-.found a:hover{color:var(--ink);border-color:var(--mute)}
-
-/* timeline */
-.tl{position:relative;padding-left:0}
-.yr-row{display:grid;grid-template-columns:200px 1fr;gap:32px;padding:30px 0;border-top:1px solid var(--line);position:relative}
-.yr-row:last-child{border-bottom:1px solid var(--line)}
-.yr-row .y{font-family:var(--serif);font-size:clamp(44px,5vw,64px);line-height:.9;color:var(--mute);transition:color .4s}
-.yr-row.seen .y{color:var(--ink)}
-.yr-row h6{font-size:20px;font-weight:500;letter-spacing:-.01em}
-.yr-row h6 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--c)}
-.yr-row p{color:var(--ink2);font-weight:300;margin-top:6px;max-width:720px}
-.yr-row .bar{position:absolute;left:0;top:-1px;height:1px;width:0;background:var(--c);transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
-.yr-row.seen .bar{width:100%}
-@media(max-width:760px){.yr-row{grid-template-columns:1fr;gap:8px}}
-
-/* model registry */
-.reg{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--bg2)}
-.reg-h,.rg{display:grid;grid-template-columns:200px 1.3fr 1fr 1.5fr;gap:24px;padding:18px 26px;align-items:center}
-.reg-h{color:var(--mute);border-bottom:1px solid var(--line);background:var(--bg)}
-.rg{border-bottom:1px solid var(--line);transition:background .25s;position:relative}
-.rg:last-child{border-bottom:0}
-.rg::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--c);transform:scaleY(0);transition:transform .3s}
-.rg:hover{background:var(--bg3)}.rg:hover::before{transform:scaleY(1)}
-.fam{font-weight:600;font-size:17px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.fam i{width:10px;height:10px;border-radius:3px;background:var(--c);box-shadow:0 0 14px var(--c)}
-.fam small{font-family:var(--mono);font-size:11px;font-weight:400;color:var(--mute)}
-.ms{font-size:15px;color:var(--ink)}
-.via{color:var(--c)}
-.use{color:var(--ink2);font-size:14px;font-weight:300}
-.route{margin-top:20px;display:flex;gap:20px;align-items:baseline;padding:20px 26px;border:1px dashed var(--line2);border-radius:16px}
-.route .mono{color:var(--genai);white-space:nowrap}
-.route p{font-family:var(--serif);font-style:italic;font-size:clamp(19px,2vw,24px);color:var(--ink2);line-height:1.3}
-@media(max-width:900px){.reg-h{display:none}.rg{grid-template-columns:1fr;gap:6px;padding:20px}.route{flex-direction:column;gap:8px}}
-
-/* fine-tuning */
-.ft{margin-top:20px;border:1px solid var(--line);border-radius:20px;padding:30px 26px;background:linear-gradient(135deg,color-mix(in srgb,var(--llm) 8%,var(--bg2)),var(--bg2))}
-.ft-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px;margin-bottom:24px}
-.ft-head .mono{color:var(--llm)}
-.ft-head h3{font-size:clamp(26px,3vw,36px);font-weight:500;letter-spacing:-.02em}
-.ft-head h3 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--llm)}
-.ft-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.ftc{padding:18px;border-radius:14px;background:var(--bg);border:1px solid var(--line);border-top:2px solid var(--c);display:flex;flex-direction:column;gap:6px}
-.ftc b{font-size:17px;font-weight:600}
-.ftc span{color:var(--ink2);font-size:14px;font-weight:300}
-.ft-note{color:var(--mute);margin-top:18px}
-@media(max-width:900px){.ft-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:560px){.ft-grid{grid-template-columns:1fr}}
-
 /* experience */
 .xp{border-top:1px solid var(--line)}
 .xr{display:grid;grid-template-columns:200px 1fr;gap:32px;padding:28px 0;border-bottom:1px solid var(--line)}
@@ -293,19 +199,11 @@ h2 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--ink
 @media(max-width:760px){.xr{grid-template-columns:1fr;gap:6px}}
 
 /* stack */
-.stack-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:48px 16px}
+.stack-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px 16px;margin-top:48px}
 .sg{border-top:1px solid var(--line2);padding-top:18px}
 .sg .mono{color:var(--c);display:block;margin-bottom:14px}
 .sg ul{list-style:none;display:flex;flex-direction:column;gap:7px;color:var(--ink2);font-size:15px}
 @media(max-width:900px){.stack-grid{grid-template-columns:1fr 1fr;gap:32px 16px}}
-
-/* principles */
-.principles{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:80px}
-.pr{padding:28px;border-radius:18px;background:var(--bg2);border:1px solid var(--line)}
-.pr .serif{font-size:56px;line-height:.8;color:var(--genai);display:block;margin-bottom:12px}
-.pr h6{font-size:18px;font-weight:500}
-.pr p{color:var(--ink2);font-weight:300;font-size:15px;margin-top:8px}
-@media(max-width:900px){.principles{grid-template-columns:1fr}}
 
 /* contact */
 .contact{position:relative;overflow:hidden;border-top:1px solid var(--line)}
@@ -321,12 +219,6 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 .rv.seen{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}*{animation:none!important}}
 
-/* marquee */
-.marq{overflow:hidden;border-bottom:1px solid var(--line);padding:22px 0;mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
-.marq-in{display:flex;gap:48px;width:max-content;animation:marq 60s linear infinite}
-.marq span{font-family:var(--serif);font-style:italic;font-size:28px;color:var(--mute);white-space:nowrap;display:flex;align-items:center;gap:48px}
-.marq span::after{content:"✳";font-style:normal;font-size:16px;color:var(--genai)}
-@keyframes marq{to{transform:translateX(-50%)}}
 </style>
 </head>
 <body>
@@ -335,12 +227,10 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   <div class="wrap">
     <a href="#top" class="logo"><i></i>Tapas Mohanty</a>
     <div class="nav-links">
-      <a href="#systems"><b>01</b>systems</a>
-      <a href="#map"><b>02</b>capabilities</a>
-      <a href="#models"><b>03</b>models</a>
-      <a href="#index"><b>04</b>index</a>
-      <a href="#experience"><b>05</b>experience</a>
-      <a href="#contact"><b>06</b>contact</a>
+      <a href="#systems"><b>01</b>work</a>
+      <a href="#index"><b>02</b>projects</a>
+      <a href="#experience"><b>03</b>experience</a>
+      <a href="#contact"><b>04</b>contact</a>
     </div>
   </div>
 </nav>
@@ -377,76 +267,45 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   <div id="tip"></div>
   <div class="wrap">
     <div class="hero-text">
-      <div class="eyebrow mono"><span></span>Senior AI engineer · RAG · LLM fine-tuning · full stack · DevOps</div>
-      <h1>I build full-stack<br><em>AI systems</em></h1>
-      <p class="lede">I’m a <b>full-stack developer and AI engineer</b> building end-to-end products—from responsive React/Next.js interfaces and TypeScript services to Python APIs, PostgreSQL data layers, LLM integrations, agent workflows, and production-ready deployment.</p>
+      <div class="eyebrow mono"><span></span>Full-stack developer & AI engineer · 10 years</div>
+      <h1>I build full&#8209;stack<br><em>AI systems</em></h1>
+      <p class="lede">Web apps in <b>React, TypeScript and Python</b>, with the LLM pipelines, agents and tests behind them.</p>
 
       <div class="ask" id="ask">
-        <div class="ask-head mono"><div class="dots"><i></i><i></i><i></i></div><span>retrieve ⟶ rank ⟶ generate</span></div>
+        <div class="ask-head mono"><div class="dots"><i></i><i></i><i></i></div><span>ask this page</span></div>
         <form id="askForm" autocomplete="off">
           <span class="prompt">❯</span>
-          <input id="q" type="text" placeholder="e.g. how do you test LLM changes before they ship?" aria-label="Ask the portfolio">
+          <input id="q" type="text" placeholder="e.g. how do you test LLM changes?" aria-label="Ask the portfolio">
           <button type="submit">ask ↵</button>
         </form>
         <div class="chips" id="chips"></div>
         <div class="answer" id="answer"></div>
       </div>
-      <div class="hero-actions">
-        <a class="btn solid" style="--c:var(--rag)" href="#systems">Explore projects ↓</a>
-        <a class="btn" style="--c:var(--llm)" href="https://github.com/tap222" target="_blank" rel="noopener">GitHub ↗</a>
-        <a class="btn" style="--c:var(--genai)" href="#contact">Contact me ↗</a>
-      </div>
-      <div class="tech-tags" aria-label="Core technology stack">
-        <span>Full Stack</span><span>Python</span><span>FastAPI</span><span>Django</span><span>TypeScript</span><span>React</span><span>Next.js</span><span>Node.js</span><span>PostgreSQL</span><span>Docker</span><span>Kubernetes</span><span>LLMs &amp; Agents</span><span>RAG</span><span>AI Evals</span>
-      </div>
     </div>
   </div>
-  <div class="hero-legend mono" id="legend"></div>
   <div class="scroll-cue mono"><i></i>scroll</div>
 </header>
 
-<div class="stats">
-  <div class="wrap">
-    <div class="stat"><b>10+</b><span class="mono">years across software, AI & product delivery</span></div>
-    <div class="stat"><b>3</b><span class="mono">flagship systems built end to end</span></div>
-    <div class="stat"><b>Open source</b><span class="mono">Assay AI evaluation tooling</span></div>
-    <div class="stat"><b>Full cycle</b><span class="mono">architecture → implementation → verification</span></div>
-  </div>
-</div>
-
-<div class="marq" aria-hidden="true"><div class="marq-in" id="marq"></div></div>
-
-<!-- 01 SYSTEMS -->
+<!-- 01 WORK -->
 <section id="systems">
   <div class="wrap">
     <div class="sec-head rv">
-      <div class="stage mono"><b>stage 01</b>flagship systems</div>
-      <div>
-        <h2>Three systems, <em>end to end</em></h2>
-        <p class="sec-sub">Not demos. Each one runs a pipeline with state, retries, verification and a way to tell when the AI got worse. Click a diagram to watch it run.</p>
-      </div>
+      <div class="stage mono"><b>01</b>selected work</div>
+      <div><h2>Three systems I <em>built</em></h2></div>
     </div>
 
     <!-- ASSAY -->
-    <article class="flag rv" style="--c:var(--mlops)">
+    <article class="flag rv" id="p-assay" style="--c:var(--mlops)">
       <div>
-        <span class="num">i. LLMOps · evaluation</span>
+        <span class="num">i. LLM evaluation · open source</span>
         <h3>Assay</h3>
-        <div class="tag">"Your prompt change broke 3 cases. Here's which ones, what changed, and whether it's real or noise"</div>
-        <p>Behavioral regression testing for AI apps and agents. Each test case is compared with its own last passing run, so a pull request shows exactly how the AI's behavior moved, not just a pass/fail count.</p>
-        <ul>
-          <li>Behavior diffs: tool calls in order, cost, context, with a severity</li>
-          <li>Repeated attempts separate real regressions from chance, corrected for multiple checks</li>
-          <li>Judges calibrated against human labels, with bias and drift probes</li>
-          <li>A PR guard that refuses loosened assertions or skipped tests</li>
-          <li>Document-extraction metrics: fields, line items, tables, OCR, confidence gates</li>
-          <li>OpenTelemetry (OTLP) ingest: production traces become eval trajectories with no code changes</li>
-        </ul>
-        <div class="pills"><span class="pill">pytest plugin</span><span class="pill">Jest / Vitest</span><span class="pill">GitHub Actions</span><span class="pill">LLM-as-judge</span><span class="pill">evals system</span><span class="pill">OpenTelemetry</span><span class="pill">agents</span><span class="pill">MCP</span></div>
+        <div class="tag">Tells you which test cases a prompt change broke, and whether it's real or noise</div>
+        <p>Regression tests for AI apps and agents. Each case is compared with its last passing run, so a pull request shows how the AI's behavior changed.</p>
+        <div class="pills"><span class="pill">pytest</span><span class="pill">Jest / Vitest</span><span class="pill">GitHub Actions</span><span class="pill">OpenTelemetry</span></div>
         <div class="links">
           <a class="btn solid" href="https://github.com/tap222/assay-evals" target="_blank" rel="noopener">github ↗</a>
-          <a class="btn" href="https://pypi.org/project/assay-server/" target="_blank" rel="noopener">pypi: assay-server</a>
-          <a class="btn" href="https://www.npmjs.com/package/assay-evals" target="_blank" rel="noopener">npm: assay-evals</a>
+          <a class="btn" href="https://pypi.org/project/assay-server/" target="_blank" rel="noopener">pypi</a>
+          <a class="btn" href="https://www.npmjs.com/package/assay-evals" target="_blank" rel="noopener">npm</a>
         </div>
       </div>
       <div class="pipe" data-pipe>
@@ -470,20 +329,14 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
     </article>
 
     <!-- FOLIO -->
-    <article class="flag rv" style="--c:var(--rag)">
+    <article class="flag rv" id="p-folio" style="--c:var(--rag)">
       <div>
-        <span class="num">ii. document AI · GenAI in production</span>
+        <span class="num">ii. document AI</span>
         <h3>Folio</h3>
-        <div class="tag">A document intelligence pipeline where every document is a state machine row</div>
-        <p>Scans come in; structured, verified records come out. One generic stage engine runs every step the same way: take a lock, run the worker, write the stage output, advance the status, queue the next stage. Scheduled jobs restart anything that stalls.</p>
-        <ul>
-          <li>File prep → image pre-processing → OCR → classification → indexing → verification</li>
-          <li>Provider-neutral AI layer: Gemini on Vertex AI by default, Claude and Qwen per domain</li>
-          <li>FastAPI ingest, one Celery queue per stage, Beat for recovery and batch jobs</li>
-          <li>Postgres for state, Redis broker, object storage, Kafka events</li>
-        </ul>
-        <div class="pills"><span class="pill">FastAPI</span><span class="pill">Celery + Beat</span><span class="pill">Kafka</span><span class="pill">Redis</span><span class="pill">PostgreSQL</span><span class="pill">Prometheus</span><span class="pill">Vertex AI</span><span class="pill">OCR</span></div>
-        <div class="links"><span class="btn lock">🔒 private repo · walkthrough on request</span></div>
+        <div class="tag">Scanned documents in, checked records out</div>
+        <p>Every document moves through the same stage engine: lock, run, save, advance. Stalled jobs restart on their own.</p>
+        <div class="pills"><span class="pill">FastAPI</span><span class="pill">Celery</span><span class="pill">Kafka</span><span class="pill">PostgreSQL</span><span class="pill">Vertex AI</span></div>
+        <div class="links"><span class="btn lock">🔒 private · walkthrough on request</span></div>
       </div>
       <div class="pipe" data-pipe>
         <div class="pipe-title mono"><span>document lifecycle</span><b>▶ run</b></div>
@@ -508,21 +361,14 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
     </article>
 
     <!-- OPSWREN -->
-    <article class="flag rv" style="--c:var(--prod)">
+    <article class="flag rv" id="p-opswren" style="--c:var(--prod)">
       <div>
-        <span class="num">iii. AIOps · agents · platform</span>
+        <span class="num">iii. AI operations · agents</span>
         <h3>Opswren</h3>
-        <div class="tag">An AI operations platform: a request goes in, a verified change comes out</div>
-        <p>One work-item lifecycle for every request, incident and issue. The model is a replaceable worker; state, routing, evidence, approvals and verified outcomes belong to the runtime. Runs on a backend, an Android app and an iPhone app.</p>
-        <ul>
-          <li>Prompt → AI plan → code edits on a branch → tests in a sandbox → diff for review</li>
-          <li>PR → human approval (policy engine) → merge → deploy → closed-loop verification</li>
-          <li>Infra monitoring turns alerts into incidents that verify and close themselves</li>
-          <li>Requests from GitHub, GitLab, Slack, Teams, email, WhatsApp and Sheets; results go back to the source</li>
-          <li>Bring your own model: Anthropic, OpenAI-compatible or Gemini keys</li>
-        </ul>
-        <div class="pills"><span class="pill">Python</span><span class="pill">agents</span><span class="pill">Kafka</span><span class="pill">Prometheus</span><span class="pill">Grafana</span><span class="pill">SSH + Linux agent</span><span class="pill">Kotlin</span><span class="pill">SwiftUI</span><span class="pill">Docker</span></div>
-        <div class="links"><span class="btn lock">🔒 private repos · demo on request</span></div>
+        <div class="tag">A request goes in, a tested and approved change comes out</div>
+        <p>An AI operations platform with Android and iPhone apps. The model does the work; the platform owns approvals and checks the result.</p>
+        <div class="pills"><span class="pill">Python</span><span class="pill">agents</span><span class="pill">Kafka</span><span class="pill">Prometheus</span><span class="pill">Kotlin</span><span class="pill">SwiftUI</span></div>
+        <div class="links"><span class="btn lock">🔒 private · demo on request</span></div>
       </div>
       <div class="phone-wrap">
         <div class="phone"><video src="assets/opswren-demo.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Opswren Android app demo: plan a change, approve it, fix an incident"></video></div>
@@ -532,135 +378,29 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   </div>
 </section>
 
-<!-- 02 MAP -->
-<section id="map" style="padding-top:0">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <div class="stage mono"><b>stage 02</b>capability map</div>
-      <div>
-        <h2>Where I go <em>deep</em></h2>
-        <p class="sec-sub">Eight areas, each backed by code I've shipped. Click a project to jump to it in the index.</p>
-      </div>
-    </div>
-    <div class="caps rv" id="caps"></div>
-  </div>
-</section>
-
-<!-- MODELS -->
-<section id="models" style="padding-top:0">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <div class="stage mono"><b>model registry</b>what's in production</div>
-      <div>
-        <h2>The models I <em>ship with</em></h2>
-        <p class="sec-sub">Frontier APIs, open weights on my own hardware, and the small models that do the unglamorous work. Each one is picked per task and kept behind a provider-neutral interface, so swapping one is a config change.</p>
-      </div>
-    </div>
-    <div class="reg rv">
-      <div class="reg-h mono"><span>family</span><span>models</span><span>served via</span><span>used for</span></div>
-      <div class="rg" style="--c:#6cc4ff"><div class="fam"><i></i>Gemini <small>Google</small></div><div class="ms">Gemini 3.1 Pro · Gemini 3 Flash · Gemini 2.5 Pro / Flash · Flash-Lite</div><div class="via mono">Vertex AI · AI Studio · supervised tuning</div><div class="use">Document extraction (Folio default), multimodal meeting insights, image analysis, IoT chatbot</div></div>
-      <div class="rg" style="--c:#ff9b6b"><div class="fam"><i></i>Claude <small>Anthropic</small></div><div class="ms">Claude Opus · Claude Sonnet · Claude Haiku</div><div class="via mono">Anthropic SDK · Bedrock fine-tuning</div><div class="use">Agentic code changes in Opswren, per-domain extraction in Folio, eval judges in Assay</div></div>
-      <div class="rg" style="--c:#7ee0b5"><div class="fam"><i></i>GPT <small>OpenAI</small></div><div class="ms">GPT-5 · GPT-5 mini · GPT-4.1</div><div class="via mono">OpenAI API · fine-tuning API</div><div class="use">RAG answers, platform intelligence layer, bring-your-own-key agents</div></div>
-      <div class="rg" style="--c:#a78bfa"><div class="fam"><i></i>Qwen <small>Alibaba</small></div><div class="ms">Qwen3 1.7B / 4B / 8B · Qwen-Max · Qwen2.5-VL 72B</div><div class="via mono">Ollama · DashScope · LoRA fine-tuning</div><div class="use">Local SQL agent + MCP, vision-language document reading, low-cost routing tiers</div></div>
-      <div class="rg" style="--c:#f5c86a"><div class="fam"><i></i>Llama <small>Meta</small></div><div class="ms">Llama 3 8B (fine-tuned for Odia) · Llama 3.1 · Llama 3.2</div><div class="via mono">Unsloth · LoRA · llama.cpp / GGUF · Ollama</div><div class="use">Low-resource language model, fully offline voice assistant</div></div>
-      <div class="rg" style="--c:#ff6b9d"><div class="fam"><i></i>MiniMax <small>MiniMax</small></div><div class="ms">MiniMax text models (fine-tuned)</div><div class="via mono">API · supervised fine-tuning</div><div class="use">Domain-specific generation and long-context tasks</div></div>
-      <div class="rg" style="--c:#c9c3b7"><div class="fam"><i></i>Small open models</div><div class="ms">Mistral · Phi-2 · Qwen3 1.7B</div><div class="via mono">Ollama · local CPU / GPU</div><div class="use">Cheap classification, planner steps, offline fallbacks</div></div>
-      <div class="rg" style="--c:#6ef2c2"><div class="fam"><i></i>Embeddings</div><div class="ms">BGE-M3 · BGE-small · Gemini Embedding · OpenAI embeddings</div><div class="via mono">sentence-transformers · APIs</div><div class="use">Vector search in ChromaDB and pgvector, semantic dedupe, retrieval for RAG</div></div>
-      <div class="rg" style="--c:#ff7eb6"><div class="fam"><i></i>Vision & speech</div><div class="ms">YOLO · MobileCLIP · CRNN · diarization pipelines</div><div class="via mono">PyTorch · Jetson · edge</div><div class="use">Drone and person detection, open-vocabulary tagging, plate OCR, meeting transcripts</div></div>
-    </div>
-    <div class="ft rv">
-      <div class="ft-head"><span class="mono">fine-tuned, not just prompted</span><h3>Models I've <em>trained</em></h3></div>
-      <div class="ft-grid">
-        <div class="ftc" style="--c:#a78bfa"><b>Qwen</b><span>LoRA / QLoRA supervised fine-tuning on domain data, served locally and through OpenAI-compatible endpoints</span></div>
-        <div class="ftc" style="--c:#ff6b9d"><b>MiniMax</b><span>Supervised fine-tuning for domain-specific generation and long-context tasks</span></div>
-        <div class="ftc" style="--c:#f5c86a"><b>Llama 3 8B</b><span>Continued pre-training and LoRA for Odia with Unsloth, merged and exported to GGUF</span></div>
-        <div class="ftc" style="--c:#6cc4ff"><b>Gemini</b><span>Supervised tuning on Vertex AI for structured extraction</span></div>
-        <div class="ftc" style="--c:#7ee0b5"><b>OpenAI GPT</b><span>Fine-tuning API: curated JSONL datasets, held-out evals before and after</span></div>
-        <div class="ftc" style="--c:#ff9b6b"><b>Claude</b><span>Claude Haiku fine-tuning on Amazon Bedrock for fast, consistent task outputs</span></div>
-      </div>
-      <p class="ft-note mono">every tuned model ships with a regression suite that compares it with the base model it replaces</p>
-    </div>
-    <div class="route rv">
-      <span class="mono">routing rule</span>
-      <p>Frontier model where judgment matters, a small or local model where volume matters, and an eval in front of every swap</p>
-    </div>
-  </div>
-</section>
-
-<!-- 03 INDEX -->
+<!-- 02 PROJECTS -->
 <section id="index" style="padding-top:0">
   <div class="wrap">
     <div class="sec-head rv">
-      <div class="stage mono"><b>stage 03</b>project index</div>
-      <div>
-        <h2>The <em>retrievable</em> corpus</h2>
-        <p class="sec-sub">A curated slice of 200+ repositories. Public ones link to code; private and client-adjacent ones are described and available to walk through.</p>
-      </div>
+      <div class="stage mono"><b>02</b>projects</div>
+      <div><h2>Also <em>built</em></h2></div>
     </div>
-    <div class="filters rv" id="filters"></div>
     <div class="grid" id="grid"></div>
-    <div class="found rv">
-      <span class="mono">// foundations: built from scratch, 2017–2020</span>
-      <div id="found"></div>
-    </div>
   </div>
 </section>
 
-<!-- EXPERIENCE -->
+<!-- 03 EXPERIENCE -->
 <section id="experience" style="padding-top:0">
   <div class="wrap">
     <div class="sec-head rv">
-      <div class="stage mono"><b>experience</b>where the work happened</div>
-      <div>
-        <h2>Ten years, <em>four rooms</em></h2>
-        <p class="sec-sub">Designing, building and running AI and backend systems, from the model to the pipeline to the pager.</p>
-      </div>
+      <div class="stage mono"><b>03</b>experience</div>
+      <div><h2>Where I've <em>worked</em></h2></div>
     </div>
     <div class="xp">
-      <div class="xr rv" style="--c:var(--rag)"><div class="xd mono">Dec 2023 → now</div><div><h6>Senior AI Engineer <em>· Things Alive</em></h6><p>Microservices for an automotive diagnostics and industrial IoT platform: MQTT and event-driven telemetry ingest, real-time alerting, RAG chatbots with agent workflows over vector search, and a multi-tenant platform rebuild. Docker, CI/CD, database tuning, caching and horizontal scaling for high-volume real-time workloads.</p></div></div>
-      <div class="xr rv" style="--c:var(--llm)"><div class="xd mono">2021 → 2023</div><div><h6>Senior Software Engineer, AI & Full Stack <em>· Infosys</em></h6><p>Cloud-native React and Node.js applications for enterprise clients. Led automation platforms for schema, data and stored-procedure migration that cut manual effort by 50–60%. Queue-based async processing, AI-assisted validation, query optimization and CI/CD on AWS, GCP and Azure.</p></div></div>
-      <div class="xr rv" style="--c:var(--mlops)"><div class="xd mono">2018 → 2021</div><div><h6>ML Engineer & Tech Lead, R&D <em>· Capgemini</em></h6><p>Led an engineering team building enterprise AI: NLP "how-to" assistants with TF-IDF and custom ranking, ticket recommendation and clustering engines, document ingestion and embedding pipelines, and analytics dashboards.</p></div></div>
-      <div class="xr rv" style="--c:var(--found)"><div class="xd mono">2014 → 2018</div><div><h6>Business Analyst <em>· Bridge & Roof</em>, then PGDM <em>· FORE School of Management</em></h6><p>Requirements, BRDs and delivery tracking on infrastructure projects, then an MBA in marketing and IT operations. B.Tech, IGIT Sarang.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- 04 JOURNEY -->
-<section id="journey" style="padding-top:0">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <div class="stage mono"><b>stage 04</b>training history</div>
-      <div>
-        <h2>From notebooks <em>to pagers</em></h2>
-        <p class="sec-sub">Moving from "it scores well" to "it runs well, and we'll know when it doesn't".</p>
-      </div>
-    </div>
-    <div class="tl" id="tl"></div>
-
-    <div class="principles">
-      <div class="pr rv"><span class="serif">“</span><h6>Evals before vibes</h6><p>If a prompt change can't be measured, it can't be shipped. Every AI feature gets regression cases on day one.</p></div>
-      <div class="pr rv"><span class="serif">“</span><h6>The model is a worker, not the system</h6><p>State, retries, approvals and verification live in the runtime, so models stay swappable.</p></div>
-      <div class="pr rv"><span class="serif">“</span><h6>Close the loop</h6><p>A job isn't done when the model answers. It's done when the outcome is checked and written back.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- STACK -->
-<section id="stack" style="padding-top:0">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <div class="stage mono"><b>toolchain</b>what I reach for</div>
-      <div><h2>The <em>stack</em></h2></div>
-    </div>
-    <div class="stack-grid rv">
-      <div class="sg" style="--c:var(--llm)"><span class="mono">LLMs & GenAI</span><ul><li>Gemini 3.1 Pro / 3 Flash · Vertex AI</li><li>Claude Opus / Sonnet / Haiku</li><li>GPT-5 · GPT-4.1 · Qwen3 · Llama 3</li><li>Ollama · llama.cpp · GGUF</li><li>Fine-tuning: LoRA · QLoRA · SFT · Unsloth</li><li>Qwen · MiniMax · Gemini · GPT · Claude tuning</li><li>LangChain · SmolAgents · MCP</li></ul></div>
-      <div class="sg" style="--c:var(--rag)"><span class="mono">RAG & retrieval</span><ul><li>ChromaDB · pgvector</li><li>Embeddings · rerank · TF-IDF</li><li>OCR · layout parsing</li><li>Airflow crawling pipelines</li><li>Grounded answers + citations</li></ul></div>
-      <div class="sg" style="--c:var(--mlops)"><span class="mono">MLOps & evals</span><ul><li>Evals systems · LLM-as-judge</li><li>pytest · Jest · Vitest</li><li>Regression gates in CI</li><li>Agent benchmarks · sandboxes</li><li>Reproducible training</li></ul></div>
-      <div class="sg" style="--c:var(--prod)"><span class="mono">Observability</span><ul><li>OpenTelemetry · OTLP</li><li>Langfuse tracing</li><li>Prometheus · Grafana</li><li>Alerting → incidents</li><li>Cost & latency tracking</li></ul></div>
-      <div class="sg" style="--c:#b4f461"><span class="mono">Full stack</span><ul><li>Node.js · NestJS · TypeScript</li><li>TypeORM · SQLAlchemy</li><li>FastAPI · Django</li><li>React · Next.js · React Native</li><li>Kotlin · SwiftUI</li></ul></div>
-      <div class="sg" style="--c:var(--genai)"><span class="mono">Data, queues & streaming</span><ul><li>PostgreSQL · query & index tuning</li><li>Redis · Kafka</li><li>Celery · BullMQ</li><li>WebSocket · Socket.IO</li><li>MQTT · video streaming</li></ul></div>
-      <div class="sg" style="--c:#d4d4d8"><span class="mono">DevOps & CI/CD</span><ul><li>Docker · Kubernetes</li><li>GitHub Actions · GitLab CI</li><li>CI/CD pipelines · PR gates</li><li>Nginx · Linux · SSH</li><li>Policy-gated deploys</li></ul></div>
-      <div class="sg" style="--c:var(--vision)"><span class="mono">Vision & edge</span><ul><li>YOLO · CLIP · CRNN</li><li>PyTorch · TensorFlow · Keras</li><li>Jetson · edge inference</li><li>Radar + IMU sensor fusion</li><li>OpenCV</li></ul></div>
+      <div class="xr rv" style="--c:var(--rag)"><div class="xd mono">2023 → now</div><div><h6>Senior AI Engineer <em>· Things Alive</em></h6></div></div>
+      <div class="xr rv" style="--c:var(--llm)"><div class="xd mono">2021 → 2023</div><div><h6>Senior Software Engineer <em>· Infosys</em></h6></div></div>
+      <div class="xr rv" style="--c:var(--mlops)"><div class="xd mono">2018 → 2021</div><div><h6>ML Engineer & Tech Lead <em>· Capgemini</em></h6></div></div>
+      <div class="xr rv" style="--c:var(--found)"><div class="xd mono">2014 → 2018</div><div><h6>Business Analyst <em>· Bridge & Roof</em></h6></div></div>
     </div>
   </div>
 </section>
@@ -668,18 +408,16 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 <!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="wrap">
-    <div class="stage mono rv" style="margin-bottom:28px"><b>stage 05</b>serve</div>
+    <div class="stage mono rv" style="margin-bottom:28px"><b>04</b>contact</div>
     <h2 class="rv">Let's build something<br>that <em>stays up</em></h2>
-    <p class="sec-sub rv">Open to roles and collaborations in GenAI platforms, RAG, LLM evaluation, full-stack product engineering and ML infrastructure. Happy to walk through any private project live.</p>
     <div class="row rv">
       <a class="btn solid" style="--c:var(--rag)" href="https://www.linkedin.com/in/tapas-mohanty/" target="_blank" rel="noopener">LinkedIn ↗</a>
       <a class="btn" style="--c:var(--genai)" href="mailto:mtapas.mohanty95@gmail.com">mtapas.mohanty95@gmail.com</a>
-      <a class="btn" style="--c:var(--llm)" href="https://github.com/tap222" target="_blank" rel="noopener">GitHub · tap222 ↗</a>
-      <a class="btn" style="--c:var(--mlops)" href="https://github.com/tap222/assay-evals" target="_blank" rel="noopener">Start with Assay ↗</a>
+      <a class="btn" style="--c:var(--llm)" href="https://github.com/tap222" target="_blank" rel="noopener">GitHub ↗</a>
     </div>
   </div>
 </section>
-<footer><div class="wrap mono"><span>© <span id="yr"></span> Tapas Mohanty</span><span>hand-built · no framework · retrieval runs in your browser</span></div></footer>
+<footer><div class="wrap mono"><span>© <span id="yr"></span> Tapas Mohanty</span><span>hand-built · no framework</span></div></footer>
 
 <script>
 const CAT = {
@@ -705,100 +443,16 @@ const P = [
   d:'AI operations platform. Requests and alerts become work items: plan, code edit, sandbox tests, approval, deploy, verification. Backend plus Android and iOS apps.',
   s:['Python','Docker','CI/CD','Prometheus','Kotlin','SwiftUI'], k:'claude gpt gemini byok devops ci cd pipeline deployment kubernetes infrastructure kafka prometheus grafana observability aiops agents devops deploy incident monitoring autonomous coding agent approval policy sandbox platform production engineering mobile slack github'},
  {id:'iot',n:'Connected-vehicle & IoT platform', cat:'prod', y:2025, repo:null,
-  d:'Microservices for vehicle diagnostics: MQTT telemetry ingest, DTC fault management, firmware-flashing workflows, live tracking and trips. Kafka feeds alarm watchers, BullMQ runs workflows, and a RAG chatbot answers technical questions, traced with Langfuse and OpenTelemetry.',
-  s:['Node.js','NestJS','MQTT','Kafka','BullMQ','RAG','OpenTelemetry'], k:'iot connected vehicle automotive diagnostics dtc firmware flashing mqtt telemetry streaming kafka bullmq bull queue jobs event driven alarms alerts rag chatbot embeddings semantic search langfuse opentelemetry otel tracing observability nodejs node nestjs microservices production engineering'},
- {id:'tenant',n:'Multi-tenant IoT platform 2.0', cat:'prod', y:2026, repo:null,
-  d:'Tenant isolation in two layers: a scoped repository that makes an unscoped query a compile error, and Postgres row-level security under an unprivileged role. Audited cross-tenant reads, per-role field filtering, a drift-aware projection, and a pgvector intelligence layer. 100+ tests run against real Postgres 16.',
-  s:['NestJS','TypeORM','PostgreSQL RLS','pgvector','Socket.IO','Railway'], k:'multi tenant tenancy row level security rls postgresql postgres typeorm security audit rbac jwt pgvector vector ai prediction nestjs nodejs node websocket socket redis full stack ci cd pipeline github actions gitlab railway deploy devops'},
- {id:'telemetry',n:'High-volume telemetry pipeline', cat:'devops', y:2026, repo:null,
-  d:'Industrial telemetry at scale: PostgreSQL range partitioning with 60-day retention and online shadow-table migration, ON CONFLICT dedupe replacing full-table prechecks, set-based KPI queries, cached shift metrics and coalesced requests. BullMQ consumers, Socket.IO live logs, systemd services, backups, archiving and Gatus uptime monitoring.',
-  s:['PostgreSQL partitioning','BullMQ','MQTT','Socket.IO','systemd','Gatus','Nginx'], k:'database optimization query tuning postgresql postgres partitioning partition index indexing performance retention archive migration telemetry iot streaming mqtt websocket socket bullmq bull queue devops systemd backup monitoring gatus uptime nginx linux deploy caching kpi'},
- {id:'crm',n:'Booking CRM with AI receptionist', cat:'full', y:2026, repo:null,
-  d:'Full-stack, multi-platform CRM. NestJS on Node.js with TypeORM over PostgreSQL, tuned with 275+ indexes including partial unique ones. Socket.IO realtime behind a Redis adapter, BullMQ jobs, GitHub Actions PR checks and deploys. Its AI receptionist is gated by Assay evals.',
-  s:['Node.js','NestJS','TypeORM','PostgreSQL','Socket.IO','BullMQ','GitHub Actions'], k:'full stack fullstack nodejs node nestjs typescript typeorm postgresql postgres database optimization index indexing query performance websocket socket realtime streaming redis bullmq bull queue background jobs ci cd pipeline github actions deploy crm booking ai receptionist evals mobile react'},
+  d:'Vehicle diagnostics platform: MQTT telemetry, fault alerts, firmware updates and a RAG chatbot for technicians.',
+  s:['Node.js','NestJS','MQTT','Kafka'], k:'iot connected vehicle automotive diagnostics dtc firmware flashing mqtt telemetry streaming kafka bullmq bull queue jobs event driven alarms alerts rag chatbot embeddings semantic search langfuse opentelemetry otel tracing observability nodejs node nestjs microservices production engineering'},
  {id:'sqlagent',n:'Agentic SQL + MCP server', cat:'llm', y:2026, repo:null,
-  d:'Natural-language analytics over Postgres: a SmolAgents SQL agent and an MCP server exposing schema and read-only query tools. Local Qwen via Ollama, PII guardrail, feedback memory.',
+  d:'Ask questions of a Postgres database in plain English, using a local Qwen model and an MCP server.',
   s:['SmolAgents','MCP','Ollama','SQLAlchemy'], k:'qwen3 8b agent mcp tool calling text to sql natural language database analytics guardrails pii local llm qwen ollama'},
- {id:'droneRag',n:'Drone RAG', cat:'rag', y:2025, repo:null,
-  d:'Multi-user RAG app: JWT auth, document and image upload with OCR, per-user Chroma collections, threaded chat with memory, grounded answers from an LLM.',
-  s:['FastAPI','ChromaDB','OCR','React'], k:'rag retrieval augmented generation vector database chroma chat memory documents question answering knowledge base embeddings drone'},
  {id:'odiaLLM',n:'Odia LLM', cat:'llm', y:2024, repo:null,
-  d:'Adapting Llama-3 8B to Odia: corpus crawling and synthetic and machine-translated data, continued pre-training and LoRA fine-tuning with Unsloth, merge and GGUF export for llama.cpp, evaluation harness.',
+  d:'Fine-tuned Llama 3 8B for Odia, a low-resource Indian language, and exported it to run offline.',
   s:['Llama 3','Unsloth','LoRA','GGUF'], k:'qwen minimax gemini gpt openai claude fine tuning finetune lora qlora sft supervised pretraining low resource language indic odia oriya llama training dataset gguf quantization evaluation'},
- {id:'voxivate',n:'Meeting & incident insights', cat:'genai', y:2025, repo:null,
-  d:'Audio → diarized transcript → multimodal Gemini analysis with optional PDFs and whiteboard photos. Produces minutes, action items, incident reports, sentiment and intent.',
-  s:['Gemini','diarization','multimodal'], k:'generative multimodal audio speech transcription diarization summarization meeting minutes gemini incident report'},
- {id:'voxmorph',n:'Voxmorph Assistant', cat:'genai', y:2024, repo:null,
-  d:'A fully offline voice assistant on Llama 3.2: speech in, then summarise, rephrase, answer and draft emails without data leaving the machine.',
-  s:['Llama 3.2','speech','local inference'], k:'voice assistant offline local llm privacy speech generative on device llama'},
- {id:'lokaltalk',n:'Odia news intelligence', cat:'rag', y:2025, repo:null,
-  d:'Airflow pipelines crawling 15+ Odia news outlets for links and article bodies, with content similarity and dedupe feeding a local-language news product.',
-  s:['Airflow','crawlers','similarity'], k:'airflow data pipeline crawling scraping news similarity dedupe odia indic etl ingestion'},
- {id:'odiaPdf',n:'Odia PDF extractor', cat:'rag', y:2025, repo:'pdf_extractor_odia',
-  d:'Scanned Odia PDFs to structured rows: page and panel segmentation, field-level OCR, merge into spreadsheets.',
-  s:['OCR','OpenCV','pandas'], k:'ocr pdf extraction document scanned odia table structured data layout'},
- {id:'logbench',n:'Agent benchmark task', cat:'mlops', y:2026, repo:'fix-log-report',
-  d:'A containerised agent-eval task: instructions, Docker environment, oracle solution and a verifier that scores each run with a reward.',
-  s:['Docker','verifier','agents'], k:'agent evaluation benchmark docker verifier reward terminal task harness'},
- {id:'aegis',n:'AEGIS counter-drone ISR', cat:'vision', y:2026, repo:'aegis-drone-detection',
-  d:'Drone detection with multi-sensor fusion, field data capture and a live operator dashboard, with hardware integration and an enhancement roadmap.',
-  s:['YOLO','sensor fusion','Python'], k:'drone detection computer vision sensor fusion defense dashboard real time edge'},
- {id:'camradar',n:'Camera + radar fusion', cat:'vision', y:2026, repo:'cam_radar_yolo',
-  d:'Hybrid YOLO + MobileCLIP detection and tracking fused with mmWave radar and IMU, gimbal control, MQTT alerting and a streaming web UI.',
-  s:['YOLO','MobileCLIP','MQTT','WebSocket streaming'], k:'websocket streaming video edge vision yolo clip tracking radar fusion mqtt streaming gimbal jetson real time open vocabulary'},
- {id:'talos',n:'TALOS edge runtime', cat:'vision', y:2026, repo:null,
-  d:'Production split of an edge vision system: Jetson model workers, a backend for device ingest, WebSocket and logs, and a separate UI. Benchmarked across 9 models.',
-  s:['Jetson','WebSocket','Docker','streaming'], k:'streaming video websocket docker devops edge deployment jetson benchmark model serving websocket device production inference latency'},
- {id:'face',n:'Face search on Postgres', cat:'vision', y:2024, repo:'face_recognition_postgresql', star:4,
-  d:'Face embeddings stored and searched in PostgreSQL behind a FastAPI service, with enrolment and live webcam recognition.',
-  s:['FastAPI','Postgres','embeddings'], k:'face recognition embeddings vector search postgres fastapi api similarity'},
- {id:'textsim',n:'Text similarity in production', cat:'mlops', y:2020, repo:'Text_Similarity-Classification-production',
-  d:'An NLP similarity and classification model packaged for production: config, preprocessing, train and inference entry points, tests.',
-  s:['Python','scikit-learn','pytest'], k:'nlp text similarity classification production packaging tests mlops deployment'},
- {id:'prodcode',n:'Production training pipeline', cat:'mlops', y:2020, repo:'Production_code',
-  d:'A reusable training skeleton: stratified folds, a model dispatcher and scripted runs, so experiments are repeatable.',
-  s:['Python','scikit-learn'], k:'mlops training pipeline cross validation folds reproducible experiments dispatcher'},
- {id:'ticket',n:'Ticket routing', cat:'prod', y:2020, repo:'Ticket_Routing', star:1,
-  d:'Multi-label routing of support tickets with TF-IDF features and logistic regression.',
-  s:['TF-IDF','scikit-learn'], k:'classification multilabel nlp support ticket routing itsm'},
- {id:'alpr',n:'Indian licence plate recognition', cat:'vision', y:2019, repo:'Indian_ALPR_Webcam',
-  d:'CRNN (CuDNN-LSTM and GRU variants) trained on synthetic Indian plates generated per vehicle class, with perspective and augmentation.',
-  s:['CRNN','Keras','synthetic data'], k:'ocr licence plate crnn synthetic data generation computer vision'},
- {id:'gan3d',n:'3D-GAN in TF 2.0', cat:'genai', y:2020, repo:'tensorflow2.0-3dGAN',
-  d:'Voxel 3D generative adversarial network reimplemented in TensorFlow 2.0.',
-  s:['TensorFlow','GAN'], k:'gan generative 3d voxel tensorflow'},
- {id:'chatbot',n:'QA chatbot service', cat:'llm', y:2024, repo:null,
-  d:'Django REST chatbot with generated question–answer training data and a retrainable model behind an API.',
-  s:['Django','DRF'], k:'chatbot question answering django api training'},
 ];
-const FOUND = [
- ['Neural network from scratch','Neural_Network_from_scratch'],['CNN in NumPy','scratch_numpy_cnn'],['XGBoost from scratch','building_xgboost_scratch'],
- ['word2vec in Keras','word2vec_from_scratch_keras'],['CBOW & skip-gram','cbow_skip_gram_implementation'],['Viterbi','Verbiti_algorithm'],
- ['Gradient descent variants','Different_types_gradient_descent'],['Grad-CAM','Grad_cam_conv'],['RBM topic modelling','RBM_Topic_Modelling'],
- ['Gaussian mixtures','Gaussian_Mixture_Model'],['Fast cosine similarity','Faster_calculation_cosine_similarity'],['Gesture recognition','Gesture_Recognition'],
- ['LSTM time series','LSTM_timeseries'],['Tiny blockchain','Creation_Tiny_Blockchain'],
-];
-const CAPS = [
- {c:'rag', t:'RAG & <em>retrieval</em>', p:'Ingestion, OCR, chunking, vector stores and grounded answers, including the unglamorous parts: per-user isolation, chat memory and verifying what came back.', ids:['folio','droneRag','lokaltalk','odiaPdf']},
- {c:'llm', t:'LLMs & <em>agents</em>', p:'Fine-tuning Qwen, MiniMax, Llama, Gemini, GPT and Claude, tool-using agents, MCP servers and multi-provider routing between frontier and local models.', ids:['odiaLLM','sqlagent','opswren','chatbot']},
- {c:'genai', t:'Generative <em>AI</em>', p:'Multimodal products on Gemini, Claude, GPT, Qwen and Llama: audio to structured insight, vision-language document reading, offline assistants, and generative models from GANs to today\'s LLMs.', ids:['voxivate','voxmorph','gan3d','folio']},
- {c:'mlops', t:'MLOps & <em>evals</em>', p:'An evals system for AI behavior: regression tests, calibrated judges, CI gates, OpenTelemetry traces turned into test cases, agent benchmarks and reproducible training.', ids:['assay','logbench','crm','textsim','prodcode']},
- {c:'prod', t:'Production <em>engineering</em>', p:'Kafka event streams, MQTT ingest, Celery and BullMQ job queues, PostgreSQL partitioning and query tuning, row-level security, OpenTelemetry tracing. Systems that page you less.', ids:['iot','tenant','folio','sqlagent']},
- {c:'full', t:'Full <em>stack</em>', p:'Node.js and NestJS services on TypeORM and PostgreSQL, query and index tuning, WebSocket realtime and streaming, React web and React Native, Kotlin and SwiftUI apps.', ids:['crm','tenant','iot','opswren']},
- {c:'devops', t:'DevOps & <em>CI/CD</em>', p:'GitHub Actions and GitLab CI pipelines, tag-promoted releases that wait for CI, Docker, Kubernetes, systemd services, backups, Prometheus, Grafana and Gatus. Infrastructure that tests and ships itself.', ids:['telemetry','opswren','tenant','crm']},
- {c:'vision', t:'ML at the <em>edge</em>', p:'Real-time detection and tracking on Jetson-class hardware, fused with radar and IMU, streamed to operators over MQTT and WebSocket.', ids:['aegis','camradar','talos','face','alpr']},
-];
-const TL = [
- {y:'2026', c:'mlops', h:'Evals, document AI and <em>AIOps</em>', p:'Released Assay on PyPI and npm. Built Folio\'s stage engine and multi-provider AI layer, Opswren\'s plan → test → approve → deploy → verify loop, an MCP-based SQL agent, Kafka + BullMQ event pipelines with OpenTelemetry tracing, a full-stack NestJS/TypeORM/PostgreSQL CRM with realtime WebSockets and CI/CD, and edge sensor-fusion systems.'},
- {y:'2025', c:'rag', h:'RAG goes <em>multi-user</em>', p:'Drone RAG with auth, OCR ingest and memory; Airflow pipelines over 15+ Odia news sources; multimodal meeting and incident insights on Gemini.'},
- {y:'2024', c:'llm', h:'Training an <em>Odia LLM</em>', p:'Continued pre-training and LoRA fine-tuning of Llama-3 for Odia, GGUF export for local inference, an offline voice assistant, face search on Postgres.'},
- {y:'2023', c:'prod', h:'ML meets <em>hardware</em>', p:'Joined Things Alive as a senior AI engineer. MQTT telemetry, vehicle diagnostics and real-time alerting: the start of IoT, streaming and edge work.'},
- {y:'2021', c:'full', h:'Full stack at <em>enterprise scale</em>', p:'React and Node.js platforms for migration automation, queue-driven processing and query tuning across AWS, GCP and Azure.'},
- {y:'2020', c:'vision', h:'Vision and <em>production habits</em>', p:'3D-GANs, pedestrian attributes, MTCNN faces, mono depth. Started packaging models with configs, tests and train/infer entry points.'},
- {y:'2019', c:'genai', h:'Everything <em>from scratch</em>', p:'Neural nets, CNNs, XGBoost, word2vec and Viterbi implemented by hand. A CRNN plate reader trained on synthetic data.'},
- {y:'2017', c:'found', h:'Hackathons and <em>first models</em>', p:'Kaggle and Analytics Vidhya competitions, McKinsey and IIT-B hackathons, R and Python analytics, the first chatbots.'},
-];
-const QUICK = ['RAG over documents','testing LLM changes in CI','fine-tuning for Indic languages','agents with MCP','Kafka, Celery & BullMQ','OpenTelemetry tracing','full stack Node.js & TypeORM','CI/CD & DevOps','PostgreSQL partitioning & tuning','Gemini, Claude, GPT & Qwen','fine-tuning Qwen & MiniMax'];
+const QUICK = ['RAG over documents','testing LLM changes','agents with MCP','fine-tuning LLMs'];
 
 /* ---------- render ---------- */
 const $ = s=>document.querySelector(s);
@@ -806,37 +460,15 @@ const col = c => (CAT[c]||{c:'#9b968c'}).c;
 const byId = Object.fromEntries(P.map(p=>[p.id,p]));
 $('#yr').textContent = new Date().getFullYear();
 
-$('#legend').innerHTML = Object.values(CAT).map(v=>`<span><i style="background:${v.c}"></i>${v.label}</span>`).join('');
 $('#chips').innerHTML = QUICK.map(q=>`<button class="chip" type="button">${q}</button>`).join('');
-const mq = ['retrieval-augmented generation','Gemini','Claude','GPT-5','Qwen3','MiniMax','Llama 3','BGE-M3','LLM fine-tuning','evals systems','Kafka','agents & MCP','Celery','fine-tuning','BullMQ','document AI','OpenTelemetry','MLOps','Prometheus + Grafana','Node.js','TypeORM','PostgreSQL tuning','Kubernetes','CI/CD pipelines','WebSocket streaming','full stack','production engineering','edge inference','multimodal GenAI','closed-loop verification'];
-$('#marq').innerHTML = [...mq,...mq].map(t=>`<span>${t}</span>`).join('');
-
-$('#caps').innerHTML = CAPS.map((c,i)=>`<div class="cap" style="--c:${col(c.c)}">
-  <div class="k"><span class="mono">0${i+1} / ${CAT[c.c].label.toLowerCase()}</span><div class="orb"></div></div>
-  <h4>${c.t}</h4><p>${c.p}</p>
-  <div class="uses">${c.ids.map(id=>`<span data-go="${id}">${byId[id].n}</span>`).join('')}</div></div>`).join('');
-
-const counts = {}; P.forEach(p=>counts[p.cat]=(counts[p.cat]||0)+1);
-$('#filters').innerHTML = `<button class="f on" data-f="all">all <sup>${P.length}</sup></button>` +
-  Object.entries(CAT).map(([k,v])=>`<button class="f" data-f="${k}" style="--c:${v.c}"><i></i>${v.label} <sup>${counts[k]||0}</sup></button>`).join('');
-$('#grid').innerHTML = P.slice().sort((a,b)=>(b.flag||0)-(a.flag||0)||b.y-a.y).map(p=>`
+$('#grid').innerHTML = P.filter(p=>!p.flag).sort((a,b)=>b.y-a.y).map(p=>`
  <article class="card rv" id="p-${p.id}" data-cat="${p.cat}" style="--c:${col(p.cat)}">
   <div class="top"><span class="cat"><i></i>${CAT[p.cat].label}</span><span class="yr">${p.y}</span></div>
   <h5>${p.n}</h5><p>${p.d}</p>
   <div class="stack">${p.s.map(s=>`<span>${s}</span>`).join('')}</div>
   <div class="foot">${p.repo?`<a href="${GH+p.repo}" target="_blank" rel="noopener">tap222/${p.repo} ↗</a>`:`<span class="pv">🔒 private · on request</span>`}${p.star?`<span class="star">★ ${p.star}</span>`:''}</div>
  </article>`).join('');
-$('#found').innerHTML = FOUND.map(([n,r])=>`<a href="${GH+r}" target="_blank" rel="noopener">${n}</a>`).join('');
-$('#tl').innerHTML = TL.map(t=>`<div class="yr-row rv" style="--c:${col(t.c)}"><div class="bar"></div><div class="y">${t.y}</div><div><h6>${t.h}</h6><p>${t.p}</p></div></div>`).join('');
-
-/* filters */
-document.querySelectorAll('.f').forEach(b=>b.onclick=()=>{
-  document.querySelectorAll('.f').forEach(x=>x.classList.remove('on')); b.classList.add('on');
-  const f=b.dataset.f; document.querySelectorAll('.card').forEach(c=>c.classList.toggle('hide', f!=='all' && c.dataset.cat!==f));
-});
-document.querySelectorAll('[data-go]').forEach(el=>el.onclick=()=>goCard(el.dataset.go));
 function goCard(id){
-  document.querySelector('.f[data-f="all"]').click();
   const el=document.getElementById('p-'+id); if(!el) return;
   el.scrollIntoView({behavior:'smooth',block:'center'});
   el.animate([{boxShadow:`0 0 0 0 ${col(byId[id].cat)}`},{boxShadow:`0 0 0 6px transparent`}],{duration:900,iterations:2});
@@ -850,14 +482,9 @@ document.addEventListener('pointermove',e=>{
 /* nav */
 const nav=$('#nav'); addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>30),{passive:true});
 
-/* reveal + counters + pipelines */
+/* reveal + pipelines */
 const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('seen'); io.unobserve(e.target);} }),{threshold:.12});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
-const cio=new IntersectionObserver(es=>es.forEach(e=>{ if(!e.isIntersecting) return; cio.unobserve(e.target);
-  const to=+e.target.dataset.to, t0=performance.now(), plus=to>=10;
-  (function f(t){const k=Math.min(1,(t-t0)/1400), v=Math.round(to*(1-Math.pow(1-k,3))); e.target.textContent=v+(k===1&&plus?'+':''); if(k<1) requestAnimationFrame(f);})(t0);
-}),{threshold:.5});
-document.querySelectorAll('.cnt').forEach(el=>cio.observe(el));
 
 function runPipe(pipe){
   if(pipe._running) return; pipe._running=true;
